@@ -37,7 +37,8 @@ export default function Dashboard({ user }) {
 
 	return (
 		<div>
-			<pre>{data}</pre>
+			{loading && <p>Loading...</p>}
+			{!loading && firstName && <pre>{firstName}</pre>}
 		</div>
 	);
 }
