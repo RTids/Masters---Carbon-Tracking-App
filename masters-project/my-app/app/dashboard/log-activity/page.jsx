@@ -4,6 +4,9 @@ import getActivitiesList from '@/app/lib/carbon/getActivitiesList';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
+//Import custom components
+import ActivitySearch from '@/app/components/activitySearch';
+
 export default function LogActivity() {
 	const router = useRouter();
 	const [activitiesList, setActivitiesList] = useState(null);
@@ -22,7 +25,10 @@ export default function LogActivity() {
 
 	return (
 		<>
-			<p>Search Box</p>
+			<ActivitySearch />
+			<br></br>
+			<br></br>
+            <br></br>
 			<div>
 				<p>Food/Drink</p>
 				<p>Travel</p>
