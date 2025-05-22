@@ -12,7 +12,6 @@ import SignOutButton from '../components/signOutButton';
 import LogActivity from './log-activity/page';
 
 export default function Dashboard() {
-	const supabase = createClient();
 	const [profile, setProfile] = useState(null);
 	const router = useRouter();
 
