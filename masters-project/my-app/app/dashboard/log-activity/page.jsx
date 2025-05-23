@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import getActivitiesList from '@/app/lib/carbon/getActivitiesList';
+import getActivitiesList from '@/lib/carbon/getActivitiesList';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 

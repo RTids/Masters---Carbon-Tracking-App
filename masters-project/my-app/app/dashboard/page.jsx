@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 //Import our components
-import WelcomeMessage from '../../components/welcomeMessage';
-import Loading from '../../components/loading';
-import getProfileData from '../lib/user/getProfile';
-import SignOutButton from '../../components/signOutButton';
+import WelcomeMessage from '@/components/ui/welcomeMessage';
+import Loading from '@/components/ui/loading';
+import getProfileData from '../../lib/user/getProfile';
+import SignOutButton from '@/components/ui/signOutButton';
 import LogActivity from './log-activity/page';
 
 export default function Dashboard() {

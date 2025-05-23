@@ -1,4 +1,4 @@
-import getActivitiesList from '../../app/lib/carbon/getActivitiesList';
+import getActivitiesList from '../../lib/carbon/getActivitiesList';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 

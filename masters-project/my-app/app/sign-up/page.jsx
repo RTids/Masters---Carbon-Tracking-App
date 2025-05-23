@@ -1,4 +1,4 @@
-import { signup } from '../lib/user/actions';
+import { signup } from '../../lib/user/actions';
 
 export default function SignUpPage() {
 	return (
