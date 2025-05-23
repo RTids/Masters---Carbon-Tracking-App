@@ -1,4 +1,4 @@
-import getActivitiesList from '../lib/carbon/getActivitiesList';
+import getActivitiesList from '../../app/lib/carbon/getActivitiesList';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 
@@ -27,9 +27,8 @@ export default function ActivitySearch() {
 
 	const filteredActivites = activityList.filter((activity) => {
 		const regex = new RegExp(`\\b${searchTerm}`, 'i');
-        return regex.test(activity.name)
-    }
-	);
+		return regex.test(activity.name);
+	});
 
 	return (
 		<div>

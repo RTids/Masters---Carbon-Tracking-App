@@ -5,7 +5,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
 //Import custom components
-import ActivitySearch from '@/app/components/activitySearch';
+import ActivitySearch from '@/components/ui/activitySearch';
 
 export default function LogActivity() {
 	const router = useRouter();
@@ -28,7 +28,7 @@ export default function LogActivity() {
 			<ActivitySearch />
 			<br></br>
 			<br></br>
-            <br></br>
+			<br></br>
 			<div>
 				<p>Food/Drink</p>
 				<p>Travel</p>
