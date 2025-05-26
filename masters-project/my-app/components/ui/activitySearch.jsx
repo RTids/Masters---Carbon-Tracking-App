@@ -25,10 +25,11 @@ export default function ActivitySearch() {
 		fetchActivitiesList();
 	}, []);
 
-	const filteredActivites = activityList.filter((activity) => {
-		const regex = new RegExp(`\\b${searchTerm}`, 'i');
-		return regex.test(activity.name);
-	});
+	const filteredActivites = activityList.filter((activity) =>
+		activity.tags?.some((tag) =>
+			tag.toLowerCase().includes(searchTerm.toLowerCase())
+		)
+	);
 
 	return (
 		<div>
