@@ -24,26 +24,22 @@ export async function login(formData) {
 export async function signup(formData) {
 	const supabase = await createClient();
 
-	const email = formData.get('email');
-	const password = formData.get('password');
-	const first_name = formData.get('first_name');
-	const last_name = formData.get('last_name');
-
-	const { error } = await supabase.auth.signUp({
-		email,
-		password,
+	const data = {
+		email: formData.get('email'),
+		password: formData.get('password'),
 		options: {
 			data: {
-				first_name,
-				last_name,
+				first_name: formData.get('first_name'),
+				last_name: formData.get('last_name'),
 			},
 		},
-	});
+	};
+
+	const { error } = await supabase.auth.signUp(data);
 
 	if (error) {
-		redirect('/error');
+		return { error: error.message };
 	}
 
-	revalidatePath('/', 'layout');
-	redirect('/check-email');
+	return { success: true };
 }

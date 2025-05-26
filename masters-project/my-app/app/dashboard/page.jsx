@@ -13,23 +13,37 @@ import LogActivity from './log-activity/page';
 
 export default function Dashboard() {
 	const [profile, setProfile] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
 	const router = useRouter();
 
 	useEffect(() => {
 		const fetchProfileData = async () => {
+			const supabase = createClient();
+
+			const { data: userData, error: userError } =
+				await supabase.auth.getUser();
+
+			if (userError || !userData?.user) {
+				router.push('/login');
+			}
+
 			try {
 				const data = await getProfileData();
 				setProfile(data);
 			} catch (err) {
 				console.log(err);
 			}
+			setIsLoading(false);
 		};
 		fetchProfileData();
-	}, []);
+	}, [router]);
+
+	if (isLoading) {
+		return <Loading />;
+	}
 
 	return (
 		<div>
-			{!profile && <Loading />}
 			{profile && <WelcomeMessage name={profile.first_name} />}
 			<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			<SignOutButton />
