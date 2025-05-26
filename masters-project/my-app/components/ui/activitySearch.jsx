@@ -1,11 +1,13 @@
 import getActivitiesList from '../../lib/carbon/getActivitiesList';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
+import Modal from './modal';
 
 export default function ActivitySearch() {
 	const [activityList, setActivityList] = useState([]);
 	const [selectedActivity, setSelectedActivity] = useState(null);
 	const [searchTerm, setSearchTerm] = useState('');
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
 		const fetchActivitiesList = async () => {
@@ -31,6 +33,12 @@ export default function ActivitySearch() {
 		)
 	);
 
+	//When clicking an activity in the search list, open modal and set selected activity
+	const handleSelect = (activity) => {
+		setSelectedActivity(activity);
+		setIsModalOpen(true);
+	};
+
 	return (
 		<div>
 			<input
@@ -46,7 +54,7 @@ export default function ActivitySearch() {
 						return (
 							<li
 								key={activity.id}
-								onClick={() => setSelectedActivity(activity)}
+								onClick={() => handleSelect(activity)}
 							>
 								{activity.name}
 							</li>
@@ -54,6 +62,17 @@ export default function ActivitySearch() {
 					})}
 				</ul>
 			)}
+
+			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+				{selectedActivity ? (
+					<div>
+						<h2>{selectedActivity.name}</h2>
+						<h4>{selectedActivity.emissions_per_unit}</h4>
+					</div>
+				) : (
+					<p>'No selected activity.'</p>
+				)}
+			</Modal>
 		</div>
 	);
 }
