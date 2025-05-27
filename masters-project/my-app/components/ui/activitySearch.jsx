@@ -2,12 +2,16 @@ import getActivitiesList from '../../lib/carbon/getActivitiesList';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import Modal from './modal';
+import logActivity from '@/lib/carbon/logActivity';
+import { toast } from 'sonner';
 
 export default function ActivitySearch() {
 	const [activityList, setActivityList] = useState([]);
 	const [selectedActivity, setSelectedActivity] = useState(null);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [amount, setAmount] = useState(0);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchActivitiesList = async () => {
@@ -39,6 +43,21 @@ export default function ActivitySearch() {
 		setIsModalOpen(true);
 	};
 
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setLoading(true);
+
+		const result = await logActivity(amount, selectedActivity);
+
+		setLoading(false);
+
+		if (result?.error) {
+			toast.error(result.error);
+		} else {
+			toast.success('Successfully logged activity!');
+		}
+	};
+
 	return (
 		<div>
 			<input
@@ -52,10 +71,7 @@ export default function ActivitySearch() {
 				<ul>
 					{filteredActivites.map((activity) => {
 						return (
-							<li
-								key={activity.id}
-								onClick={() => handleSelect(activity)}
-							>
+							<li key={activity.id} onClick={() => handleSelect(activity)}>
 								{activity.name}
 							</li>
 						);
@@ -68,6 +84,17 @@ export default function ActivitySearch() {
 					<div>
 						<h2>{selectedActivity.name}</h2>
 						<h4>{selectedActivity.emissions_per_unit}</h4>
+						<form onSubmit={handleSubmit}>
+							<input
+								id='amount'
+								name='amount'
+								type='number'
+								value={amount}
+								onChange={(e) => setAmount(e.target.value)}
+							/>
+							<label htmlFor='amount'>{selectedActivity.unit}</label>
+							<button type='submit'>Log</button>
+						</form>
 					</div>
 				) : (
 					<p>'No selected activity.'</p>
