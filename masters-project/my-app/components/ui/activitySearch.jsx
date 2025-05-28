@@ -1,35 +1,17 @@
-import getActivitiesList from '../../lib/carbon/getActivitiesList';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import Modal from './modal';
 import logActivity from '@/lib/carbon/logActivity';
 import { toast } from 'sonner';
 
-export default function ActivitySearch() {
-	const [activityList, setActivityList] = useState([]);
+export default function ActivitySearch({ activityList }) {
 	const [selectedActivity, setSelectedActivity] = useState(null);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [amount, setAmount] = useState(0);
 	const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
-		const fetchActivitiesList = async () => {
-			const supabase = createClient();
-			const { data: sessionData, error: sessionError } =
-				await supabase.auth.getUser();
-
-			if (sessionError || !sessionData)
-				throw new Error('User not authenticated.');
-			try {
-				const data = await getActivitiesList();
-				setActivityList(data);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		fetchActivitiesList();
-	}, []);
+	if (!activityList) return <p>Loading activities...</p>;
 
 	const filteredActivites = activityList.filter((activity) =>
 		activity.tags?.some((tag) =>
@@ -41,6 +23,7 @@ export default function ActivitySearch() {
 	const handleSelect = (activity) => {
 		setSelectedActivity(activity);
 		setIsModalOpen(true);
+		setLoading(false)
 	};
 
 	const handleSubmit = async (e) => {
@@ -50,6 +33,7 @@ export default function ActivitySearch() {
 		const result = await logActivity(amount, selectedActivity);
 
 		setLoading(false);
+		setIsModalOpen(false)
 
 		if (result?.error) {
 			toast.error(result.error);
@@ -93,7 +77,9 @@ export default function ActivitySearch() {
 								onChange={(e) => setAmount(e.target.value)}
 							/>
 							<label htmlFor='amount'>{selectedActivity.unit}</label>
-							<button type='submit'>Log</button>
+							<button type='submit' disabled={loading}>
+								{loading ? 'Logging...' : 'Log Activity'}
+							</button>
 						</form>
 					</div>
 				) : (

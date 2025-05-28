@@ -6,16 +6,23 @@ import { useRouter } from 'next/navigation';
 
 //Import custom components
 import ActivitySearch from '@/components/ui/activitySearch';
+import BackButton from '@/components/ui/backButton';
 
 export default function LogActivity() {
 	const router = useRouter();
-	const [activitiesList, setActivitiesList] = useState(null);
+	const [activityList, setActivityList] = useState(null);
 
 	useEffect(() => {
 		const fetchActivitiesList = async () => {
+			const supabase = createClient();
+			const { data: sessionData, error: sessionError } =
+				await supabase.auth.getUser();
+
+			if (sessionError || !sessionData)
+				throw new Error('User not authenticated.');
 			try {
 				const data = await getActivitiesList();
-				setActivitiesList(data);
+				setActivityList(data);
 			} catch (err) {
 				console.log(err);
 			}
@@ -25,7 +32,8 @@ export default function LogActivity() {
 
 	return (
 		<>
-			<ActivitySearch />
+			<BackButton location={'/dashboard'} />
+			<ActivitySearch activityList={activityList} />
 			<br></br>
 			<br></br>
 			<br></br>
