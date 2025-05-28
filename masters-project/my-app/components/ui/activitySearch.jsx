@@ -3,6 +3,7 @@ import { createClient } from '@/utils/supabase/client';
 import Modal from './modal';
 import logActivity from '@/lib/carbon/logActivity';
 import { toast } from 'sonner';
+import LogActivityForm from './logActivityForm';
 
 export default function ActivitySearch({ activityList }) {
 	const [selectedActivity, setSelectedActivity] = useState(null);
@@ -23,23 +24,7 @@ export default function ActivitySearch({ activityList }) {
 	const handleSelect = (activity) => {
 		setSelectedActivity(activity);
 		setIsModalOpen(true);
-		setLoading(false)
-	};
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		setLoading(true);
-
-		const result = await logActivity(amount, selectedActivity);
-
 		setLoading(false);
-		setIsModalOpen(false)
-
-		if (result?.error) {
-			toast.error(result.error);
-		} else {
-			toast.success('Successfully logged activity!');
-		}
 	};
 
 	return (
@@ -62,29 +47,16 @@ export default function ActivitySearch({ activityList }) {
 					})}
 				</ul>
 			)}
-
 			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-				{selectedActivity ? (
-					<div>
-						<h2>{selectedActivity.name}</h2>
-						<h4>{selectedActivity.emissions_per_unit}</h4>
-						<form onSubmit={handleSubmit}>
-							<input
-								id='amount'
-								name='amount'
-								type='number'
-								value={amount}
-								onChange={(e) => setAmount(e.target.value)}
-							/>
-							<label htmlFor='amount'>{selectedActivity.unit}</label>
-							<button type='submit' disabled={loading}>
-								{loading ? 'Logging...' : 'Log Activity'}
-							</button>
-						</form>
-					</div>
-				) : (
-					<p>'No selected activity.'</p>
-				)}
+				<LogActivityForm
+					activity={selectedActivity}
+					onSuccess={() => {
+						setIsModalOpen(false);
+						setSearchTerm('');
+						toast.success('Successfully logged activity!');
+					}}
+					onError={(err) => toast.error(err)}
+				/>
 			</Modal>
 		</div>
 	);

@@ -1,5 +1,7 @@
+import LogActivityForm from './logActivityForm';
+
 export default function Modal({ isOpen, onClose, children }) {
-if (!isOpen) return null;
+	if (!isOpen) return null;
 
 	return (
 		<div>
@@ -15,7 +17,7 @@ if (!isOpen) return null;
 					justifyContent: 'center',
 					alignItems: 'center',
 					zIndex: 1000,
-                    color: 'black',
+					color: 'black',
 				}}
 				onClick={onClose} // close modal if background clicked
 			>
