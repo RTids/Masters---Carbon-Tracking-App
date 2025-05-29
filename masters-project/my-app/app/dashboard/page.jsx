@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -9,7 +9,6 @@ import WelcomeMessage from '@/components/ui/welcomeMessage';
 import Loading from '@/components/ui/loading';
 import getProfileData from '../../lib/user/getProfile';
 import SignOutButton from '@/components/ui/signOutButton';
-import LogActivity from './log-activity/page';
 
 export default function Dashboard() {
 	const [profile, setProfile] = useState(null);

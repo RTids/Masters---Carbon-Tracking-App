@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { createClient } from '@/utils/supabase/client';
 import Modal from './modal';
-import logActivity from '@/lib/carbon/logActivity';
 import { toast } from 'sonner';
 import LogActivityForm from './logActivityForm';
+import PinActivityButton from './pinActivityButton';
 
 export default function ActivitySearch({ activityList }) {
 	const [selectedActivity, setSelectedActivity] = useState(null);
@@ -48,6 +47,11 @@ export default function ActivitySearch({ activityList }) {
 				</ul>
 			)}
 			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+				<PinActivityButton
+					activity={selectedActivity}
+					onSuccess={(successMessage) => toast.success(successMessage)}
+					onError={(err) => toast.error(err)}
+				/>
 				<LogActivityForm
 					activity={selectedActivity}
 					onSuccess={() => {
