@@ -9,6 +9,7 @@ import WelcomeMessage from '@/components/ui/welcomeMessage';
 import Loading from '@/components/ui/loading';
 import getProfileData from '../../lib/user/getProfile';
 import SignOutButton from '@/components/ui/signOutButton';
+import QuickAccessList from '@/components/ui/quickAccessList';
 
 export default function Dashboard() {
 	const [profile, setProfile] = useState(null);
@@ -44,6 +45,7 @@ export default function Dashboard() {
 	return (
 		<div>
 			{profile && <WelcomeMessage name={profile.first_name} />}
+			<QuickAccessList />
 			<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			<SignOutButton />
 		</div>
