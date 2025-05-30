@@ -10,6 +10,7 @@ import Loading from '@/components/ui/loading';
 import getProfileData from '../../lib/user/getProfile';
 import SignOutButton from '@/components/ui/signOutButton';
 import QuickAccessList from '@/components/ui/quickAccessList';
+import { Button } from '@/components/ui/button';
 
 export default function Dashboard() {
 	const [profile, setProfile] = useState(null);
@@ -46,7 +47,9 @@ export default function Dashboard() {
 		<div className='flex flex-col items-center w-full'>
 			{profile && <WelcomeMessage name={profile.first_name} />}
 			<QuickAccessList />
-			<Link href={'/dashboard/log-activity'}>Log Activity</Link>
+			<Button asChild>
+				<Link href={'/dashboard/log-activity'}>Log Activity</Link>
+			</Button>
 			<SignOutButton />
 		</div>
 	);
