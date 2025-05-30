@@ -43,7 +43,7 @@ export default function Dashboard() {
 	}
 
 	return (
-		<div>
+		<div className='flex flex-col items-center w-full'>
 			{profile && <WelcomeMessage name={profile.first_name} />}
 			<QuickAccessList />
 			<Link href={'/dashboard/log-activity'}>Log Activity</Link>

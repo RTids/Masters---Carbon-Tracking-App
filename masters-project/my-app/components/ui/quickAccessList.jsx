@@ -4,6 +4,15 @@ import Modal from './modal';
 import PinActivityButton from './pinActivityButton';
 import LogActivityForm from './logActivityForm';
 import { toast } from 'sonner';
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from './carousel';
+
+import { Card, CardContent, CardTitle } from './card';
 
 export default function QuickAccessList() {
 	const [pinnedActivities, setPinnedActivities] = useState(null);
@@ -26,18 +35,32 @@ export default function QuickAccessList() {
 	};
 
 	return (
-		<div>
+		<div className=''>
 			<h3>Quick Access Activities</h3>
 			{!pinnedActivities ? (
 				<div>Loading...</div>
 			) : (
-				pinnedActivities.map((activity) => {
-					return (
-						<h4 key={activity.id} onClick={() => handleSelect(activity)}>
-							{activity.name}
-						</h4>
-					);
-				})
+				<Carousel>
+					<CarouselContent>
+						{pinnedActivities.map((activity) => {
+							return (
+								<CarouselItem
+									key={activity.id}
+									onClick={() => handleSelect(activity)}
+									className='basis-1/3'
+								>
+									<Card>
+										<CardContent>
+											<CardTitle>{activity.name}</CardTitle>
+										</CardContent>
+									</Card>
+								</CarouselItem>
+							);
+						})}
+					</CarouselContent>
+					<CarouselPrevious />
+					<CarouselNext />
+				</Carousel>
 			)}
 			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
 				<PinActivityButton
