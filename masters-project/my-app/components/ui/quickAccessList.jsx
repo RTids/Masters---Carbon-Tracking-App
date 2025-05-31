@@ -48,6 +48,15 @@ export default function QuickAccessList() {
 	};
 
 	useEffect(() => {
+		if (api && pinnedActivities) {
+			// Give time for carousel DOM to reflect changes
+			requestAnimationFrame(() => {
+				setCount(api.scrollSnapList().length);
+			});
+		}
+	}, [pinnedActivities, api]);
+
+	useEffect(() => {
 		loadPinnedList();
 	}, []);
 
