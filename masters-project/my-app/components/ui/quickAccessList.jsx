@@ -84,10 +84,12 @@ export default function QuickAccessList() {
 									onClick={() => handleSelect(activity)}
 									className='basis-1/ p1-5'
 								>
-									<Card className='size-35 text-center text-sm w-full'>
-										<CardContent className='flex flex-col items-center'>
+									<Card className='size-35 text-center text-sm w-full max-w-[140px] min-w-[140px]'>
+										<CardContent className='flex flex-col items-center w-full'>
 											{activityIcons[activity.icon]}
-											<CardTitle className='mt-5'>{activity.name}</CardTitle>
+											<CardTitle className='text-xs mt-4 w-[140px]'>
+												{activity.name}
+											</CardTitle>
 										</CardContent>
 									</Card>
 								</CarouselItem>

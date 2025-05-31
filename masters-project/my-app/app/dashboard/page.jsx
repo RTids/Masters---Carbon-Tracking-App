@@ -11,6 +11,7 @@ import getProfileData from '../../lib/user/getProfile';
 import SignOutButton from '@/components/ui/signOutButton';
 import QuickAccessList from '@/components/ui/quickAccessList';
 import { Button } from '@/components/ui/button';
+import { ModeToggle } from '@/components/ui/darkModeToggleButton';
 
 export default function Dashboard() {
 	const [profile, setProfile] = useState(null);
@@ -45,6 +46,7 @@ export default function Dashboard() {
 
 	return (
 		<div className='flex flex-col items-center gap-3'>
+			<ModeToggle />
 			{profile && <WelcomeMessage name={profile.first_name} />}
 			<QuickAccessList />
 			<Button asChild className='w-full h-[50px]'>
