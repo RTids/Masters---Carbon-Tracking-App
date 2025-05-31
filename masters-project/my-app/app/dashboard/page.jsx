@@ -44,7 +44,7 @@ export default function Dashboard() {
 	}
 
 	return (
-		<div className='flex flex-col items-center w-full'>
+		<div className='flex flex-col items-center'>
 			{profile && <WelcomeMessage name={profile.first_name} />}
 			<QuickAccessList />
 			<Button asChild>
@@ -54,3 +54,8 @@ export default function Dashboard() {
 		</div>
 	);
 }
+
+//Add images/icons to activities database that we can display with them
+//Maybe use a Card component for the 'Modal'
+//Create nav bar that will be display on all pages (Include dark mode/light mode toggle)
+//Think about changing colours for site
