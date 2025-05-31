@@ -4,7 +4,13 @@ import Modal from './modal';
 import PinActivityButton from './pinActivityButton';
 import LogActivityForm from './logActivityForm';
 import { toast } from 'sonner';
-import { Carousel, CarouselContent, CarouselItem } from './carousel';
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from './carousel';
 import { Card, CardContent, CardTitle } from './card';
 import { activityIcons } from '@/lib/ui/icons';
 
@@ -52,12 +58,15 @@ export default function QuickAccessList() {
 	};
 
 	return (
-		<div className='items-center flex flex-col'>
-			<h3>Quick Access Activities</h3>
+		<div className='items-center flex flex-col max-w-90'>
+			<h3 className='mb-2'>Quick Access Activities</h3>
 			{!pinnedActivities ? (
 				<div>Loading...</div>
 			) : (
-				<Carousel className='w-90' setApi={setApi}>
+				<Carousel
+					className='w-90 md:w-max sm:max-w-2xl lg:max-w-4xl'
+					setApi={setApi}
+				>
 					<CarouselContent className='-m1-5'>
 						{pinnedActivities.map((activity) => {
 							return (
@@ -66,16 +75,18 @@ export default function QuickAccessList() {
 									onClick={() => handleSelect(activity)}
 									className='basis-1/ p1-5'
 								>
-									<Card className='size-35'>
+									<Card className='size-35 text-center text-sm w-full'>
 										<CardContent className='flex flex-col items-center'>
 											{activityIcons[activity.icon]}
-											<CardTitle className=''>{activity.name}</CardTitle>
+											<CardTitle className='mt-5'>{activity.name}</CardTitle>
 										</CardContent>
 									</Card>
 								</CarouselItem>
 							);
 						})}
 					</CarouselContent>
+					<CarouselNext className='hidden sm:flex' />
+					<CarouselPrevious className='hidden sm:flex' />
 				</Carousel>
 			)}
 			{/* Dots below carousel */}

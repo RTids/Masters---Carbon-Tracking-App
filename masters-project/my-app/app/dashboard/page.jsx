@@ -44,10 +44,10 @@ export default function Dashboard() {
 	}
 
 	return (
-		<div className='flex flex-col items-center'>
+		<div className='flex flex-col items-center gap-3'>
 			{profile && <WelcomeMessage name={profile.first_name} />}
 			<QuickAccessList />
-			<Button asChild>
+			<Button asChild className='w-full h-[50px]'>
 				<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			</Button>
 			<SignOutButton />
