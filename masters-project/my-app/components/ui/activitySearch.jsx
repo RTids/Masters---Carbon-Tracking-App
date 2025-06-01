@@ -17,7 +17,7 @@ export default function ActivitySearch({ activityList }) {
 		(activity) =>
 			!activity.tags?.includes('hidden') &&
 			activity.tags?.some((tag) =>
-				tag.toLowerCase().includes(searchTerm.toLowerCase())
+				tag.toLowerCase().startsWith(searchTerm.toLowerCase())
 			)
 	);
 
