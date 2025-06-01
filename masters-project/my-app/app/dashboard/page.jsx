@@ -12,6 +12,7 @@ import SignOutButton from '@/components/ui/signOutButton';
 import QuickAccessList from '@/components/ui/quickAccessList';
 import { Button } from '@/components/ui/button';
 import { ModeToggle } from '@/components/ui/darkModeToggleButton';
+import NavBar from '@/components/ui/navBar';
 
 export default function Dashboard() {
 	const [profile, setProfile] = useState(null);
@@ -45,11 +46,11 @@ export default function Dashboard() {
 	}
 
 	return (
-		<div className='flex flex-col items-center gap-3'>
-			<ModeToggle />
+		<div className='flex flex-col items-center gap-3 w-full pt-20'>
+			<NavBar onDashboard={true} />
 			{profile && <WelcomeMessage name={profile.first_name} />}
 			<QuickAccessList />
-			<Button asChild className='w-full h-[50px]'>
+			<Button asChild className='w-2/3 h-[50px]'>
 				<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			</Button>
 			<SignOutButton />

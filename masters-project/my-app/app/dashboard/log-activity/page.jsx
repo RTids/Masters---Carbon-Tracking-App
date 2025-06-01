@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 //Import custom components
 import ActivitySearch from '@/components/ui/activitySearch';
 import BackButton from '@/components/ui/backButton';
+import NavBar from '@/components/ui/navBar';
+import CategoryGrid from '@/components/ui/categoryGrid';
 
 export default function LogActivity() {
 	const router = useRouter();
@@ -31,18 +33,10 @@ export default function LogActivity() {
 	}, []);
 
 	return (
-		<>
-			<BackButton location={'/dashboard'} />
+		<div className='w-full flex flex-col justify-around items-center gap-4 h-screen pt-20'>
+			<NavBar onDashboard={false} />
 			<ActivitySearch activityList={activityList} />
-			<br></br>
-			<br></br>
-			<br></br>
-			<div>
-				<p>Food/Drink</p>
-				<p>Travel</p>
-				<p>Energy/Home</p>
-				<p>Lifestyle</p>
-			</div>
-		</>
+			<CategoryGrid />
+		</div>
 	);
 }
