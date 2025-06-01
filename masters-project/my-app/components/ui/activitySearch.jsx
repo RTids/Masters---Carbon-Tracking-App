@@ -29,7 +29,7 @@ export default function ActivitySearch({ activityList }) {
 	};
 
 	return (
-		<div className='flex flex-col gap-2 w-2/3 h-15 mt-13'>
+		<div className='flex flex-col gap-2 w-2/3 h-15 mt-5'>
 			<div className='relative w-full items-center flex flex-col text-center'>
 				<input
 					className='text-center'

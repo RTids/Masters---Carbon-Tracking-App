@@ -18,5 +18,9 @@ export default function SignOutButton() {
 		}
 	};
 
-	return <Button onClick={handleSignOut}>Signout</Button>;
+	return (
+		<Button variant='destructive' onClick={handleSignOut}>
+			Signout
+		</Button>
+	);
 }

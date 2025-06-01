@@ -50,7 +50,7 @@ export default function Dashboard() {
 			<NavBar onDashboard={true} />
 			{profile && <WelcomeMessage name={profile.first_name} />}
 			<QuickAccessList />
-			<Button asChild className='w-2/3 h-[50px]'>
+			<Button asChild variant='outline' className='w-2/3 h-[50px]'>
 				<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			</Button>
 			<SignOutButton />

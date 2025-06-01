@@ -6,9 +6,10 @@ import { useRouter } from 'next/navigation';
 
 //Import custom components
 import ActivitySearch from '@/components/ui/activitySearch';
-import BackButton from '@/components/ui/backButton';
+import { Button } from '@/components/ui/button';
 import NavBar from '@/components/ui/navBar';
 import CategoryGrid from '@/components/ui/categoryGrid';
+import Link from 'next/link';
 
 export default function LogActivity() {
 	const router = useRouter();
@@ -33,10 +34,15 @@ export default function LogActivity() {
 	}, []);
 
 	return (
-		<div className='w-full flex flex-col justify-around items-center gap-4 h-screen pt-20'>
+		<>
 			<NavBar onDashboard={false} />
-			<ActivitySearch activityList={activityList} />
-			<CategoryGrid />
-		</div>
+			<div className='w-full flex flex-col justify-around items-center gap-4 h-screen pt-40'>
+				<ActivitySearch activityList={activityList} />
+				<Button variant='outline' asChild className='w-2/3 h-[50px]'>
+					<Link href={'/dashboard/log-activity/history'}>Activity History</Link>
+				</Button>
+				<CategoryGrid />
+			</div>
+		</>
 	);
 }
