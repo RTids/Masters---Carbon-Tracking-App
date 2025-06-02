@@ -11,12 +11,13 @@ import getProfileData from '../../lib/user/getProfile';
 import SignOutButton from '@/components/ui/signOutButton';
 import QuickAccessList from '@/components/ui/quickAccessList';
 import { Button } from '@/components/ui/button';
-import { ModeToggle } from '@/components/ui/darkModeToggleButton';
 import NavBar from '@/components/ui/navBar';
+import DailyEmissions from '@/components/ui/dailyEmissions';
 
 export default function Dashboard() {
 	const [profile, setProfile] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const router = useRouter();
 
 	useEffect(() => {
@@ -46,13 +47,21 @@ export default function Dashboard() {
 	}
 
 	return (
-		<div className='flex flex-col items-center gap-3 w-full pt-20'>
+		<div
+			className={`flex flex-col items-center gap-3 w-full pt-20 ${
+				isModalOpen ? 'blur-sm' : ''
+			}`}
+		>
 			<NavBar onDashboard={true} />
 			{profile && <WelcomeMessage name={profile.first_name} />}
-			<QuickAccessList />
+			<QuickAccessList
+				isModalOpen={isModalOpen}
+				setIsModalOpen={setIsModalOpen}
+			/>
 			<Button asChild variant='outline' className='w-2/3 h-[50px]'>
 				<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			</Button>
+			<DailyEmissions isModalOpen={isModalOpen} />
 			<SignOutButton />
 		</div>
 	);

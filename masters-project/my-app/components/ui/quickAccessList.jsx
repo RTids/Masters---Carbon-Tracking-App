@@ -14,9 +14,8 @@ import {
 import { Card, CardContent, CardTitle } from './card';
 import { activityIcons } from '@/lib/ui/icons';
 
-export default function QuickAccessList() {
+export default function QuickAccessList({ isModalOpen, setIsModalOpen }) {
 	const [pinnedActivities, setPinnedActivities] = useState(null);
-	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedActivity, setSelectedActivity] = useState(null);
 	//Carousel states
 	const [api, setApi] = useState(null);
@@ -69,8 +68,10 @@ export default function QuickAccessList() {
 	return (
 		<div className='items-center flex flex-col max-w-90'>
 			<h3 className='mb-2'>Quick Access Activities</h3>
-			{!pinnedActivities ? (
-				<div>Loading...</div>
+			{!pinnedActivities || pinnedActivities.length === 0 ? (
+				<div className='w-90 md:w-max sm:max-w-2xl lg:max-w-4xl h-[212px] flex justify-center items-center'>
+					No Activities Added to Quick Access
+				</div>
 			) : (
 				<Carousel
 					className='w-90 md:w-max sm:max-w-2xl lg:max-w-4xl'
@@ -84,7 +85,7 @@ export default function QuickAccessList() {
 									onClick={() => handleSelect(activity)}
 									className='basis-1/ p1-5'
 								>
-									<Card className='size-35 text-center text-sm w-full max-w-[140px] min-w-[140px]'>
+									<Card className='size-35 text-center text-sm w-full max-w-[140px] min-w-[140px] cursor-pointer'>
 										<CardContent className='flex flex-col items-center w-full'>
 											{activityIcons[activity.icon]}
 											<CardTitle className='text-xs mt-4 w-[140px]'>
@@ -96,23 +97,24 @@ export default function QuickAccessList() {
 							);
 						})}
 					</CarouselContent>
-					<CarouselNext className='hidden sm:flex' />
-					<CarouselPrevious className='hidden sm:flex' />
+					<CarouselNext className='hidden sm:flex cursor-pointer' />
+					<CarouselPrevious className='hidden sm:flex cursor-pointer' />
+					{/* Dots below carousel */}
+					<div className='flex justify-center space-x-2 mt-4 mb-4'>
+						{Array.from({ length: count }).map((_, index) => (
+							<button
+								key={index}
+								className={`h-2 w-2 rounded-full transition-colors ${
+									current === index + 1 ? 'bg-blue-600' : 'bg-gray-300'
+								}`}
+								onClick={() => goToSlide(index)}
+								aria-label={`Go to slide ${index + 1}`}
+							/>
+						))}
+					</div>
 				</Carousel>
 			)}
-			{/* Dots below carousel */}
-			<div className='flex justify-center space-x-2 mt-4 mb-4'>
-				{Array.from({ length: count }).map((_, index) => (
-					<button
-						key={index}
-						className={`h-2 w-2 rounded-full transition-colors ${
-							current === index + 1 ? 'bg-blue-600' : 'bg-gray-300'
-						}`}
-						onClick={() => goToSlide(index)}
-						aria-label={`Go to slide ${index + 1}`}
-					/>
-				))}
-			</div>
+
 			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
 				<PinActivityButton
 					activity={selectedActivity}
