@@ -4,12 +4,13 @@ import { toast } from 'sonner';
 import LogActivityForm from './logActivityForm';
 import PinActivityButton from './pinActivityButton';
 
-export default function ActivitySearch({ activityList }) {
+export default function ActivitySearch({
+	activityList,
+	isModalOpen,
+	setIsModalOpen,
+}) {
 	const [selectedActivity, setSelectedActivity] = useState(null);
 	const [searchTerm, setSearchTerm] = useState('');
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [amount, setAmount] = useState(0);
-	const [loading, setLoading] = useState(true);
 
 	if (!activityList) return <p>Loading activities...</p>;
 
@@ -25,11 +26,10 @@ export default function ActivitySearch({ activityList }) {
 	const handleSelect = (activity) => {
 		setSelectedActivity(activity);
 		setIsModalOpen(true);
-		setLoading(false);
 	};
 
 	return (
-		<div className='flex flex-col gap-2 w-2/3 h-15 mt-5'>
+		<div className={`flex flex-col gap-2 w-2/3 h-15 mt-5`}>
 			<div className='relative w-full items-center flex flex-col text-center'>
 				<input
 					className='text-center'
