@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import getDailyTotal from '@/lib/carbon/getDailyTotal';
 import getYesterdayTotal from '@/lib/carbon/getYesterdayTotal';
+import { IconTrendingUp, IconTrendingDown } from '@tabler/icons-react';
 
 export default function DailyEmissions({ isModalOpen }) {
 	const [dailyTotal, setDailyTotal] = useState(0);
@@ -16,8 +17,8 @@ export default function DailyEmissions({ isModalOpen }) {
 		const yesterdayTotal = await getYesterdayTotal();
 		setYesterdaysTotal(yesterdayTotal);
 
-		const result = todayTotal % yesterdayTotal;
-		result === NaN ? setDifference(result.toFixed(2)) : setDifference(0);
+		const result = todayTotal - yesterdayTotal;
+		setDifference(result.toFixed(2));
 	};
 
 	useEffect(() => {
@@ -25,9 +26,15 @@ export default function DailyEmissions({ isModalOpen }) {
 	}, [isModalOpen]);
 
 	return (
-		<div>
-			<h1>{dailyTotal.toFixed(2)} kg CO₂e</h1>
-			<h3>{difference}</h3>
+		<div className='text-center pt-5 pb-5'>
+			<h4>TODAY'S CURRENT FOOTPRINT</h4>
+			<p className='text-lg font-thin'>
+				<span className='text-4xl font-bold'>{dailyTotal.toFixed(2)}</span>{' '}
+				kgCO₂e
+			</p>
+			<p className='font-thin mt-3'>
+				Yesterday's Total: {yesterdaysTotal.toFixed(2)} kgCO₂e
+			</p>
 		</div>
 	);
 }

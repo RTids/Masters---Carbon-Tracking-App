@@ -48,7 +48,7 @@ export default function Dashboard() {
 
 	return (
 		<div
-			className={`flex flex-col items-center gap-3 w-full pt-20 ${
+			className={`flex flex-col justify-center items-center gap-3 w-full pt-10 ${
 				isModalOpen ? 'blur-sm' : ''
 			}`}
 		>
@@ -62,12 +62,27 @@ export default function Dashboard() {
 				<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			</Button>
 			<DailyEmissions isModalOpen={isModalOpen} />
-			<SignOutButton />
+			<div>Daily Tips</div>
+			<div className='flex flex-row w-2/3 justify-center gap-5'>
+				<Button
+					asChild
+					variant='outline'
+					className='h-[100px] w-[140px] sm:w-1/3'
+				>
+					<Link href='/dashboard/my-footprint'>My Footprint</Link>
+				</Button>
+				<Button
+					asChild
+					variant='outline'
+					className='h-[100px] w-[140px] sm:w-1/3'
+				>
+					<Link href='/dashboard/settings'>Settings</Link>
+				</Button>
+			</div>
+			{/* <SignOutButton /> */}
 		</div>
 	);
 }
 
-//Add images/icons to activities database that we can display with them
 //Maybe use a Card component for the 'Modal'
-//Create nav bar that will be display on all pages (Include dark mode/light mode toggle)
 //Think about changing colours for site

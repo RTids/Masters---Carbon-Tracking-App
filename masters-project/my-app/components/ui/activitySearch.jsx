@@ -39,7 +39,7 @@ export default function ActivitySearch({
 					onChange={(e) => setSearchTerm(e.target.value)}
 				></input>
 				{searchTerm.length > 0 && (
-					<div className='absolute top-full left-0 right-0 bg-white dark:bg-gray-800 border rounded shadow z-10 max-h-60 overflow-y-auto'>
+					<div className='absolute top-full left-0 right-0 bg-white dark:bg-gray-800 border rounded shadow z-10 max-h-60 overflow-y-auto mt-2'>
 						{filteredActivites.length > 0 ? (
 							<ul>
 								{filteredActivites.map((activity) => {

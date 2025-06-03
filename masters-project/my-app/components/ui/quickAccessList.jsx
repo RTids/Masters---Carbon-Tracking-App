@@ -66,15 +66,15 @@ export default function QuickAccessList({ isModalOpen, setIsModalOpen }) {
 	};
 
 	return (
-		<div className='items-center flex flex-col max-w-90'>
+		<div className='items-center flex flex-col max-w-100 justify-center'>
 			<h3 className='mb-2'>Quick Access Activities</h3>
 			{!pinnedActivities || pinnedActivities.length === 0 ? (
-				<div className='w-90 md:w-max sm:max-w-2xl lg:max-w-4xl h-[212px] flex justify-center items-center'>
+				<div className='w-100 md:w-max sm:max-w-2xl lg:max-w-4xl h-[212px] flex justify-center items-center'>
 					No Activities Added to Quick Access
 				</div>
 			) : (
 				<Carousel
-					className='w-90 md:w-max sm:max-w-2xl lg:max-w-4xl'
+					className='w-full md:w-max sm:max-w-2xl lg:max-w-4xl '
 					setApi={setApi}
 				>
 					<CarouselContent className='-m1-5'>

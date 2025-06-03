@@ -9,7 +9,7 @@ export default function Logo() {
 				strokeWidth='2'
 				strokeLinecap='round'
 				strokeLinejoin='round'
-				className='w-24 h-24'
+				className='w-18 h-18'
 			>
 				<path
 					d='M32 4C20 12 8 28 20 44C28 54 44 52 52 40C60 28 44 12 32 4Z'
