@@ -34,14 +34,14 @@ export default function ActivityHistory() {
 	return (
 		<div className='w-full'>
 			<NavBar onDashboard={false} />
-			<div className='flex flex-col justify-center items-center text-center max-h-2/3 overflow-y-auto'>
+			<div className='flex flex-col justify-center items-center text-center max-h-1/2 overflow-y-auto pt-40'>
 				{activityHistoryList ? (
 					activityHistoryList.map((activity, index) => (
 						<div
 							key={index}
-							className='p-2 border-b flex justify-center items-center gap-6 w-2/3'
+							className='p-2 border-b flex justify-center items-center w-2/3'
 						>
-							<div className='w-1/3'>
+							<div className='w-full sm:w-1/3'>
 								<p className='font-bold'>{activity.activityName}</p>
 								<p className='text-sm text-gray-600'>
 									{activity.category} | {activity.date}
