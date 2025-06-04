@@ -9,7 +9,7 @@ import { Button } from './button';
 export default function NavBar({ onDashboard }) {
 	const router = useRouter();
 	return (
-		<nav className='w-full flex items-center mb-4 fixed top-10 justify-center'>
+		<nav className='w-full flex items-center mb-4 pt-3 pb-3 fixed top-0 justify-center bg-background text-center'>
 			<ul className='flex flex-row justify-around w-full items-center text-center'>
 				<li className={onDashboard ? 'invisible' : 'visible'}>
 					<Button

@@ -5,6 +5,8 @@ import displayActivityHistory from '@/lib/carbon/displayActivityHistory';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
+import deleteActivity from '@/lib/carbon/deleteActivity';
 
 export default function ActivityHistory() {
 	const [activityHistoryList, setActivityHistoryList] = useState(null);
@@ -12,6 +14,7 @@ export default function ActivityHistory() {
 	const loadHistoryList = async () => {
 		const list = await displayActivityHistory();
 		setActivityHistoryList(list);
+		console.log(list);
 	};
 
 	useEffect(() => {
@@ -34,12 +37,13 @@ export default function ActivityHistory() {
 	return (
 		<div className='w-full'>
 			<NavBar onDashboard={false} />
-			<div className='flex flex-col justify-center items-center text-center max-h-1/2 overflow-y-auto pt-40'>
+			<h2 className='mt-25 text-center text-2xl'>Activity History</h2>
+			<div className='flex flex-col justify-center items-center text-center max-h-1/2 overflow-y-auto pt-5 w-full'>
 				{activityHistoryList ? (
-					activityHistoryList.map((activity, index) => (
+					activityHistoryList.map((activity) => (
 						<div
-							key={index}
-							className='p-2 border-b flex justify-center items-center w-2/3'
+							key={activity.id}
+							className='p-2 border-b flex justify-around items-center w-full pr-5 sm:justify-center'
 						>
 							<div className='w-full sm:w-1/3'>
 								<p className='font-bold'>{activity.activityName}</p>
@@ -52,7 +56,20 @@ export default function ActivityHistory() {
 									kg CO₂e
 								</p>
 							</div>
-							<Button variant='destructive' className='cursor-pointer'>
+							<Button
+								variant='destructive'
+								className='cursor-pointer sm:w-1/6'
+								onClick={async () => {
+									const result = await deleteActivity(activity.id);
+
+									if (result?.error) {
+										toast.error(`Failed to delete log: ${result.error}`);
+									} else {
+										toast.success('Activity Deleted');
+										loadHistoryList();
+									}
+								}}
+							>
 								Delete
 							</Button>
 						</div>

@@ -66,10 +66,10 @@ export default function QuickAccessList({ isModalOpen, setIsModalOpen }) {
 	};
 
 	return (
-		<div className='items-center flex flex-col max-w-100 justify-center'>
+		<div className='items-center flex flex-col max-w-4/5 justify-center'>
 			<h3 className='mb-2'>Quick Access Activities</h3>
 			{!pinnedActivities || pinnedActivities.length === 0 ? (
-				<div className='w-100 md:w-max sm:max-w-2xl lg:max-w-4xl h-[212px] flex justify-center items-center'>
+				<div className='w-full md:w-max sm:max-w-2xl lg:max-w-4xl h-[212px] flex justify-center items-center'>
 					No Activities Added to Quick Access
 				</div>
 			) : (

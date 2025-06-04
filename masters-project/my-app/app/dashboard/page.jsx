@@ -62,7 +62,7 @@ export default function Dashboard() {
 				<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			</Button>
 			<DailyEmissions isModalOpen={isModalOpen} />
-			<div>Daily Tips</div>
+			<div className='w-2/3 max-h-[140px] text-center'>Daily Tips</div>
 			<div className='flex flex-row w-2/3 justify-center gap-5'>
 				<Button
 					asChild

@@ -32,6 +32,7 @@ export default async function displayActivityHistory() {
 				icon: activity.icon,
 				units: activity.unit,
 
+				id: historyItem.id,
 				amount: historyItem.amount,
 				totalEmissions: historyItem.calculated_emissions,
 				date: formattedDate,
