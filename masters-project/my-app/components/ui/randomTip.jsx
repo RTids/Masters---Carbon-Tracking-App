@@ -8,6 +8,17 @@ export default function RandomTip() {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
+	function capitalize(word) {
+		return word.charAt(0).toUpperCase() + word.slice(1);
+	}
+
+	function formatCategory(category) {
+		const words = category.split('-');
+		const capitalWords = words.map((word) => capitalize(word));
+		const result = capitalWords.join('/');
+		return result;
+	}
+
 	useEffect(() => {
 		async function fetchTip() {
 			try {
@@ -42,7 +53,7 @@ export default function RandomTip() {
 				<span className='font-thin text-xs sm:text-sm italic'>kgCO₂e</span>
 			</p>
 			<p className='font-thin text-xs sm:text-sm italic'>
-				Category: {tip.category}
+				Category: {formatCategory(tip.category)}
 			</p>
 		</div>
 	);
