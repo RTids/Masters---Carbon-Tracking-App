@@ -13,6 +13,7 @@ import QuickAccessList from '@/components/ui/quickAccessList';
 import { Button } from '@/components/ui/button';
 import NavBar from '@/components/ui/navBar';
 import DailyEmissions from '@/components/ui/dailyEmissions';
+import RandomTip from '@/components/ui/randomTip';
 
 export default function Dashboard() {
 	const [profile, setProfile] = useState(null);
@@ -48,7 +49,7 @@ export default function Dashboard() {
 
 	return (
 		<div
-			className={`flex flex-col justify-center items-center gap-3 w-full pt-10 ${
+			className={`flex flex-col justify-center items-center gap-2 w-full pt-20 ${
 				isModalOpen ? 'blur-sm' : ''
 			}`}
 		>
@@ -62,7 +63,7 @@ export default function Dashboard() {
 				<Link href={'/dashboard/log-activity'}>Log Activity</Link>
 			</Button>
 			<DailyEmissions isModalOpen={isModalOpen} />
-			<div className='w-2/3 max-h-[140px] text-center'>Daily Tips</div>
+			<RandomTip />
 			<div className='flex flex-row w-2/3 justify-center gap-5'>
 				<Button
 					asChild

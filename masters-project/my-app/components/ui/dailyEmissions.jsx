@@ -26,13 +26,15 @@ export default function DailyEmissions({ isModalOpen }) {
 	}, [isModalOpen]);
 
 	return (
-		<div className='text-center pt-5 pb-5'>
-			<h4>TODAY'S CURRENT FOOTPRINT</h4>
-			<p className='text-lg font-thin'>
-				<span className='text-4xl font-bold'>{dailyTotal.toFixed(2)}</span>{' '}
-				kgCO₂e
+		<div className='text-center pt-3 border-b-7 pb-3 w-2/3'>
+			<h2 className='text-base font-bold sm:text-2xl'>
+				TODAY'S CURRENT FOOTPRINT
+			</h2>
+			<p className='text-lg sm:text-lg font-bold'>
+				{dailyTotal.toFixed(2)}
+				<span className='text-sm sm:text-lg font-thin'> kgCO₂e</span>
 			</p>
-			<p className='font-thin mt-3'>
+			<p className='font-thin mt-3 sm:font-base font-sm'>
 				Yesterday's Total: {yesterdaysTotal.toFixed(2)} kgCO₂e
 			</p>
 		</div>
