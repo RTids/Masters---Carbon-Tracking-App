@@ -8,7 +8,6 @@ import { useRouter } from 'next/navigation';
 import WelcomeMessage from '@/components/ui/welcomeMessage';
 import Loading from '@/components/ui/loading';
 import getProfileData from '../../lib/user/getProfile';
-import SignOutButton from '@/components/ui/signOutButton';
 import QuickAccessList from '@/components/ui/quickAccessList';
 import { Button } from '@/components/ui/button';
 import NavBar from '@/components/ui/navBar';
@@ -80,7 +79,6 @@ export default function Dashboard() {
 					<Link href='/dashboard/settings'>Settings</Link>
 				</Button>
 			</div>
-			{/* <SignOutButton /> */}
 		</div>
 	);
 }

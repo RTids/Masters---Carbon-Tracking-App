@@ -44,13 +44,13 @@ export default function RandomTip() {
 		);
 
 	return (
-		<div className='w-9/10 sm:w-2/3 max-h-[140px] text-center pt-3 pb-3'>
+		<div className='w-9/10 max-h-[140px] text-center pt-3 pb-3'>
 			<h2 className='text-base font-bold sm:text-2xl'>DAILY EMISSIONS TIP</h2>
 			<h3 className='text-sm sm:text-base'>{tip.title}</h3>
 			<p className='font-light text-sm sm:text-base'>{tip.description}</p>
 			<p className='font-light text-xs sm:text-base'>
-				Estimated Yearly Savings: {tip.estimated_savings}{' '}
-				<span className='font-thin text-xs sm:text-sm italic'>kgCO₂e</span>
+				Estimated Yearly Savings: {tip.estimated_savings}
+				<span className='font-thin text-xs sm:text-sm italic'> kgCO₂e</span>
 			</p>
 			<p className='font-thin text-xs sm:text-sm italic'>
 				Category: {formatCategory(tip.category)}
