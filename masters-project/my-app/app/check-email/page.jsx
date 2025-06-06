@@ -1,6 +1,5 @@
 'use client';
 
-import SignOutButton from '@/components/ui/signOutButton';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
@@ -42,7 +41,6 @@ export default function CheckEmail() {
 			<p className='mt-2 text-lg'>
 				Please confirm your email address before accessing the dashboard.
 			</p>
-			<SignOutButton />
 		</div>
 	);
 }

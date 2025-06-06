@@ -5,7 +5,9 @@ export default async function getProfileData() {
 	const { data: sessionData, error: sessionError } =
 		await supabase.auth.getUser();
 
-	if (sessionError || !sessionData) throw new Error('User not authenticated.');
+	if (sessionError || !sessionData) {
+		throw new Error('User not authenticated.');
+	}
 
 	const { data: profileData, error: profileError } = await supabase
 		.from('profiles')

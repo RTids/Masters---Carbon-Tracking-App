@@ -1,10 +1,12 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import getActivitiesList from '@/lib/carbon/getActivitiesList';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
 //Import custom components
+import ProtectedRoute from '@/components/protectedRoute';
 import ActivitySearch from '@/components/ui/activitySearch';
 import { Button } from '@/components/ui/button';
 import NavBar from '@/components/ui/navBar';
@@ -35,23 +37,27 @@ export default function LogActivity() {
 	}, []);
 
 	return (
-		<div
-			className={`flex flex-col justify-center items-center ${
-				isModalOpen ? 'blur-sm' : ''
-			}`}
-		>
-			<NavBar onDashboard={false} />
-			<div className='w-full flex flex-col justify-around items-center gap-4 h-screen pt-40'>
-				<ActivitySearch
-					activityList={activityList}
-					isModalOpen={isModalOpen}
-					setIsModalOpen={setIsModalOpen}
-				/>
-				<Button variant='outline' asChild className='w-2/3 h-[50px]'>
-					<Link href={'/dashboard/log-activity/history'}>Activity History</Link>
-				</Button>
-				<CategoryGrid />
+		<ProtectedRoute>
+			<div
+				className={`flex flex-col justify-center items-center ${
+					isModalOpen ? 'blur-sm' : ''
+				}`}
+			>
+				<NavBar onDashboard={false} />
+				<div className='w-full flex flex-col justify-around items-center gap-4 h-screen pt-40'>
+					<ActivitySearch
+						activityList={activityList}
+						isModalOpen={isModalOpen}
+						setIsModalOpen={setIsModalOpen}
+					/>
+					<Button variant='outline' asChild className='w-2/3 h-[50px]'>
+						<Link href={'/dashboard/log-activity/history'}>
+							Activity History
+						</Link>
+					</Button>
+					<CategoryGrid />
+				</div>
 			</div>
-		</div>
+		</ProtectedRoute>
 	);
 }
