@@ -37,22 +37,35 @@ export default function UpdateProfile({ onSuccess, onError }) {
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='first_name'>First Name:</label>
-				<input
-					id='first_name'
-					placeholder={firstName}
-					value={firstName}
-					onChange={(e) => setFirstName(e.target.value)}
-				></input>
-				<label htmlFor='last_name'>Last Name:</label>
-				<input
-					id='last_name'
-					placeholder={lastName}
-					value={lastName}
-					onChange={(e) => setLastName(e.target.value)}
-				></input>
-				<Button type='submit' disabled={loading}>
+			<h3 className='mb-3'>Profile Details:</h3>
+			<form onSubmit={handleSubmit} className='flex items-center gap-4'>
+				<div>
+					{' '}
+					<label htmlFor='first_name' className='mr-2'>
+						First Name:
+					</label>
+					<input
+						id='first_name'
+						placeholder={firstName}
+						value={firstName}
+						onChange={(e) => setFirstName(e.target.value)}
+						className='bg-primary text-primary-foreground w-1/2'
+					></input>
+				</div>
+				<div>
+					<label htmlFor='last_name' className='mr-2'>
+						Last Name:
+					</label>
+					<input
+						id='last_name'
+						placeholder={lastName}
+						value={lastName}
+						onChange={(e) => setLastName(e.target.value)}
+						className='bg-primary text-primary-foreground w-1/2'
+					></input>
+				</div>
+
+				<Button type='submit' variant='outline' disabled={loading}>
 					Update
 				</Button>
 			</form>

@@ -10,12 +10,14 @@ export default function Settings() {
 	return (
 		<ProtectedRoute>
 			<NavBar onDashboard={false} />
-			<h1>Settings</h1>
-			<UpdateProfile
-				onSuccess={() => toast.success('Update Profile.')}
-				onError={(err) => toast.error(err)}
-			/>
-			<SignOutButton />
+			<div className='h-2/3 flex flex-col items-center justify-between pt-30'>
+				<h1 className='text-2xl'>Settings</h1>
+				<UpdateProfile
+					onSuccess={() => toast.success('Update Profile.')}
+					onError={(err) => toast.error(err)}
+				/>
+				<SignOutButton />
+			</div>
 		</ProtectedRoute>
 	);
 }

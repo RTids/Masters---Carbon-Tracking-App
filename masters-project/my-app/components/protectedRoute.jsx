@@ -24,5 +24,5 @@ export default function ProtectedRoute({ children }) {
 	}, [router]);
 
 	if (loading) return <div>Loading...</div>;
-	return <>{children}</>;
+	return <div className='w-screen h-screen'>{children}</div>;
 }
