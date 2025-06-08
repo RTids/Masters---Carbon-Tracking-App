@@ -49,6 +49,7 @@ export default function UpdateProfile({ onSuccess, onError }) {
 						placeholder={firstName}
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
+                        required
 						className='bg-primary text-primary-foreground w-1/2'
 					></input>
 				</div>
@@ -61,6 +62,7 @@ export default function UpdateProfile({ onSuccess, onError }) {
 						placeholder={lastName}
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
+                        required
 						className='bg-primary text-primary-foreground w-1/2'
 					></input>
 				</div>

@@ -55,7 +55,10 @@ export default function LogActivity() {
 							Activity History
 						</Link>
 					</Button>
-					<CategoryGrid />
+					<CategoryGrid
+						isModalOpen={isModalOpen}
+						setIsModalOpen={setIsModalOpen}
+					/>
 				</div>
 			</div>
 		</ProtectedRoute>

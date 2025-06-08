@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import logActivity from '@/lib/carbon/logActivity';
 
@@ -31,6 +33,7 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 					type='number'
 					value={amount}
 					onChange={(e) => setAmount(e.target.value)}
+					required
 				/>
 				<label htmlFor='amount'>{activity.unit}</label>
 				<button type='submit' disabled={loading}>
