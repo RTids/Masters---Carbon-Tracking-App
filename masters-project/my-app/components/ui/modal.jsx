@@ -1,5 +1,6 @@
 import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
+import { Button } from './button';
 
 export default function Modal({ isOpen, onClose, children }) {
 	const [mounted, setMounted] = useState(false);
@@ -30,17 +31,19 @@ export default function Modal({ isOpen, onClose, children }) {
 				onClick={onClose} // close modal if background clicked
 			>
 				<div
+					className='p-20 min-w-[300px] flex flex-col bg-white relative justify-center items-center'
 					style={{
-						backgroundColor: 'white',
-						padding: 20,
 						borderRadius: 8,
-						minWidth: '300px',
 					}}
 					onClick={(e) => e.stopPropagation()} // prevent closing modal when clicking inside box
 				>
-					<button onClick={onClose} style={{ float: 'right' }}>
+					<Button
+						onClick={onClose}
+						variant='destructive'
+						className='absolute top-4 right-4'
+					>
 						Close
-					</button>
+					</Button>
 					{children}
 				</div>
 			</div>

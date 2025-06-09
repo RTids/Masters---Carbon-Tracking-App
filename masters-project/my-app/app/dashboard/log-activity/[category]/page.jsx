@@ -7,6 +7,7 @@ import Modal from '@/components/ui/modal';
 import PinActivityButton from '@/components/ui/pinActivityButton';
 import LogActivityForm from '@/components/ui/logActivityForm';
 import getCategoryActivitiesList from '@/lib/carbon/getCategoryActivitiesList';
+import { toast } from 'sonner';
 
 export default function History({ params }) {
 	const { category } = use(params);
@@ -51,7 +52,11 @@ export default function History({ params }) {
 						</div>
 					);
 				})}
-				<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+				<Modal
+					isOpen={isModalOpen}
+					onClose={() => setIsModalOpen(false)}
+					className='relative'
+				>
 					<PinActivityButton
 						activity={selectedActivity}
 						onSuccess={(successMessage) => toast.success(successMessage)}
@@ -61,7 +66,6 @@ export default function History({ params }) {
 						activity={selectedActivity}
 						onSuccess={() => {
 							setIsModalOpen(false);
-							setSearchTerm('');
 							toast.success('Successfully logged activity!');
 						}}
 						onError={(err) => toast.error(err)}

@@ -39,7 +39,11 @@ export default function PinActivityButton({ activity, onSuccess, onError }) {
 	};
 
 	return (
-		<Button onClick={handlePin} disabled={loading}>
+		<Button
+			onClick={handlePin}
+			disabled={loading}
+			className='absolute top-4 left-4'
+		>
 			{loading
 				? 'Loading...'
 				: isPinned

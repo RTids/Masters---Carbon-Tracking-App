@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import logActivity from '@/lib/carbon/logActivity';
+import { Button } from './button';
 
 export default function LogActivityForm({ activity, onSuccess, onError }) {
 	const [amount, setAmount] = useState(0);
@@ -23,10 +24,10 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 	};
 
 	return (
-		<div>
-			<h2>{activity.name}</h2>
+		<div className='border-2 border-solid border-red-200 text-center'>
+			<h2 className='text-2xl text-bold'>{activity.name}</h2>
 			<h4>{activity.emissions_per_unit}</h4>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} className='flex flex-col'>
 				<input
 					id='amount'
 					name='amount'
@@ -36,9 +37,9 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 					required
 				/>
 				<label htmlFor='amount'>{activity.unit}</label>
-				<button type='submit' disabled={loading}>
+				<Button type='submit' disabled={loading}>
 					{loading ? 'Logging...' : 'Log Activity'}
-				</button>
+				</Button>
 			</form>
 		</div>
 	);
