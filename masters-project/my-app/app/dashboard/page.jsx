@@ -50,7 +50,7 @@ export default function Dashboard() {
 	return (
 		<ProtectedRoute>
 			<div
-				className={`flex flex-col justify-center items-center gap-2 w-full pt-20 ${
+				className={`flex flex-col justify-center items-center gap-2 w-full pt-30 ${
 					isModalOpen ? 'blur-sm' : ''
 				}`}
 			>

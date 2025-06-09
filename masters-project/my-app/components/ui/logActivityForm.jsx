@@ -5,7 +5,7 @@ import logActivity from '@/lib/carbon/logActivity';
 import { Button } from './button';
 
 export default function LogActivityForm({ activity, onSuccess, onError }) {
-	const [amount, setAmount] = useState(0);
+	const [amount, setAmount] = useState('');
 	const [loading, setLoading] = useState(false);
 
 	const handleSubmit = async (e) => {
@@ -23,20 +23,39 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 		}
 	};
 
+	const formatUnits = (unit) => {
+		const formatted = unit.split(/[-_]/)[0];
+		return formatted;
+	};
+
+	const calculatedEmissions = (activity.emissions_per_unit * amount).toFixed(2);
+
 	return (
-		<div className='border-2 border-solid border-red-200 text-center'>
-			<h2 className='text-2xl text-bold'>{activity.name}</h2>
-			<h4>{activity.emissions_per_unit}</h4>
-			<form onSubmit={handleSubmit} className='flex flex-col'>
-				<input
-					id='amount'
-					name='amount'
-					type='number'
-					value={amount}
-					onChange={(e) => setAmount(e.target.value)}
-					required
-				/>
-				<label htmlFor='amount'>{activity.unit}</label>
+		<div className='text-center'>
+			<h2 className='text-4xl font-bold pb-3 pt-5'>{activity.name}</h2>
+			<h4 className='pb-3'>
+				{calculatedEmissions} <span className='font-thin text-sm'>kgCO₂e</span>
+			</h4>
+			<form
+				onSubmit={handleSubmit}
+				className='flex flex-col justify-center items-center text-center'
+			>
+				<div className='pb-3'>
+					<input
+						className='w-1/5 pr-2'
+						id='amount'
+						name='amount'
+						type='number'
+						min='0'
+						value={amount}
+						onChange={(e) => setAmount(e.target.value)}
+						required
+					/>
+					<label htmlFor='amount' className='text-sm font-thin'>
+						{formatUnits(activity.unit)}
+					</label>
+				</div>
+
 				<Button type='submit' disabled={loading}>
 					{loading ? 'Logging...' : 'Log Activity'}
 				</Button>

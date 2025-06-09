@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
 import { Button } from './button';
+import { Card } from './card';
 
 export default function Modal({ isOpen, onClose, children }) {
 	const [mounted, setMounted] = useState(false);
@@ -30,8 +31,8 @@ export default function Modal({ isOpen, onClose, children }) {
 				}}
 				onClick={onClose} // close modal if background clicked
 			>
-				<div
-					className='p-20 min-w-[300px] flex flex-col bg-white relative justify-center items-center'
+				<Card
+					className='p-20 min-w-[300px] flex flex-col relative justify-center items-center'
 					style={{
 						borderRadius: 8,
 					}}
@@ -45,7 +46,7 @@ export default function Modal({ isOpen, onClose, children }) {
 						Close
 					</Button>
 					{children}
-				</div>
+				</Card>
 			</div>
 		</div>,
 		document.body
