@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState, useContext } from 'react';
-import { createClient } from '@/utils/supabase/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -23,21 +22,8 @@ export default function Dashboard() {
 
 	useEffect(() => {
 		const fetchProfileData = async () => {
-			const supabase = createClient();
-
-			const { data: userData, error: userError } =
-				await supabase.auth.getUser();
-
-			if (userError || !userData?.user) {
-				router.push('/login');
-			}
-
-			try {
-				const data = await getProfileData();
-				setProfile(data);
-			} catch (err) {
-				console.log(err);
-			}
+			const data = await getProfileData();
+			setProfile(data);
 			setIsLoading(false);
 		};
 		fetchProfileData();
@@ -85,6 +71,3 @@ export default function Dashboard() {
 		</ProtectedRoute>
 	);
 }
-
-//Maybe use a Card component for the 'Modal'
-//Think about changing colours for site

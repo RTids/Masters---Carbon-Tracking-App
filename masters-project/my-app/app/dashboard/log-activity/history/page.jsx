@@ -4,7 +4,6 @@ import ProtectedRoute from '@/components/protectedRoute';
 import NavBar from '@/components/ui/navBar';
 import displayActivityHistory from '@/lib/carbon/displayActivityHistory';
 import { useEffect, useState } from 'react';
-import { createClient } from '@/utils/supabase/client';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import deleteActivity from '@/lib/carbon/deleteActivity';
@@ -21,17 +20,7 @@ export default function ActivityHistory() {
 
 	useEffect(() => {
 		const fetchActivityHistory = async () => {
-			const supabase = createClient();
-			const { data: sessionData, error: sessionError } =
-				await supabase.auth.getUser();
-
-			if (sessionError || !sessionData)
-				throw new Error('User not authenticated.');
-			try {
-				loadHistoryList();
-			} catch (err) {
-				console.log(err);
-			}
+			loadHistoryList();
 		};
 		fetchActivityHistory();
 	}, []);

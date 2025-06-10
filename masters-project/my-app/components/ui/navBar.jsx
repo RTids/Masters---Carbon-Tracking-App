@@ -3,7 +3,6 @@
 import { ModeToggle } from './darkModeToggleButton';
 import Logo from '@/lib/ui/logo';
 import { useRouter } from 'next/navigation';
-import { Router } from 'lucide-react';
 import { Button } from './button';
 
 export default function NavBar({ onDashboard }) {

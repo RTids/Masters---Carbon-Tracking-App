@@ -20,18 +20,8 @@ export default function LogActivity() {
 
 	useEffect(() => {
 		const fetchActivitiesList = async () => {
-			const supabase = createClient();
-			const { data: sessionData, error: sessionError } =
-				await supabase.auth.getUser();
-
-			if (sessionError || !sessionData)
-				throw new Error('User not authenticated.');
-			try {
-				const data = await getActivitiesList();
-				setActivityList(data);
-			} catch (err) {
-				console.log(err);
-			}
+			const data = await getActivitiesList();
+			setActivityList(data);
 		};
 		fetchActivitiesList();
 	}, []);
