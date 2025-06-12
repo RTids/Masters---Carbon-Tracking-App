@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import logActivity from '@/lib/carbon/logActivity';
 import { Button } from './button';
+import { formatUnits } from '@/utils/formatting';
 
 export default function LogActivityForm({ activity, onSuccess, onError }) {
 	const [amount, setAmount] = useState('');
@@ -23,11 +24,6 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 		}
 	};
 
-	const formatUnits = (unit) => {
-		const formatted = unit.split(/[-_]/)[0];
-		return formatted;
-	};
-
 	const calculatedEmissions = (activity.emissions_per_unit * amount).toFixed(2);
 
 	return (
@@ -38,7 +34,7 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 			</h4>
 			<form
 				onSubmit={handleSubmit}
-				className='flex flex-col justify-center items-center text-center'
+				className='flex flex-col justify-center items-center text-center gap-5'
 			>
 				<div className='pb-3'>
 					<input
@@ -56,7 +52,7 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 					</label>
 				</div>
 
-				<Button type='submit' disabled={loading}>
+				<Button type='submit' disabled={loading} variant='outline'>
 					{loading ? 'Logging...' : 'Log Activity'}
 				</Button>
 			</form>

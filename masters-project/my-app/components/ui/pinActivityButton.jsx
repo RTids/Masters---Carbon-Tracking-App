@@ -40,6 +40,7 @@ export default function PinActivityButton({ activity, onSuccess, onError }) {
 
 	return (
 		<Button
+			variant='outline'
 			onClick={handlePin}
 			disabled={loading}
 			className='absolute top-4 left-4'

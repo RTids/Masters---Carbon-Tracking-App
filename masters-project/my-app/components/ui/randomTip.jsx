@@ -2,22 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import getNextTip from '@/lib/carbon/getNextTip';
+import { formatCategory, capitalize } from '@/utils/formatting';
 
 export default function RandomTip() {
 	const [tip, setTip] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-
-	function capitalize(word) {
-		return word.charAt(0).toUpperCase() + word.slice(1);
-	}
-
-	function formatCategory(category) {
-		const words = category.split('-');
-		const capitalWords = words.map((word) => capitalize(word));
-		const result = capitalWords.join('/');
-		return result;
-	}
 
 	useEffect(() => {
 		async function fetchTip() {

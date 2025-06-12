@@ -32,7 +32,7 @@ export default function Modal({ isOpen, onClose, children }) {
 				onClick={onClose} // close modal if background clicked
 			>
 				<Card
-					className='p-20 min-w-[300px] flex flex-col relative justify-center items-center'
+					className='p-15 min-w-[300px] flex flex-col relative justify-center items-center'
 					style={{
 						borderRadius: 8,
 					}}

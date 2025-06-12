@@ -8,12 +8,12 @@ import PinActivityButton from '@/components/ui/pinActivityButton';
 import LogActivityForm from '@/components/ui/logActivityForm';
 import getCategoryActivitiesList from '@/lib/carbon/getCategoryActivitiesList';
 import { toast } from 'sonner';
+import { formatCategory } from '@/utils/formatting';
 
 export default function History({ params }) {
 	const { category } = use(params);
 	const [activitiesList, setActivitiesList] = useState(null);
 	const [selectedActivity, setSelectedActivity] = useState(null);
-	const [loading, setLoading] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const validCategories = ['travel', 'energy-home', 'food-drink', 'lifestyle'];
@@ -23,7 +23,8 @@ export default function History({ params }) {
 
 	const getActivities = async () => {
 		const results = await getCategoryActivitiesList(category);
-		setActivitiesList(results);
+		const sorted = results.sort((a, b) => a.name.localeCompare(b.name));
+		setActivitiesList(sorted);
 	};
 
 	const handleSelect = (activity) => {
@@ -43,15 +44,20 @@ export default function History({ params }) {
 		<ProtectedRoute>
 			<NavBar onDashboard={false} />
 			<div className='pt-30 flex flex-col justify-center items-center'>
-				<h1>Category</h1>
-				<h3>{category}</h3>
-				{activitiesList.map((activity) => {
-					return (
-						<div key={activity.id} onClick={() => handleSelect(activity)}>
-							<h4>{activity.name}</h4>
-						</div>
-					);
-				})}
+				<h3 className='text-3xl font-bold mb-4'>{formatCategory(category)}</h3>
+				<div className='mt-2 w-2/3 flex flex-col justify-center items-center text-center gap-1'>
+					{activitiesList.map((activity) => {
+						return (
+							<div
+								key={activity.id}
+								onClick={() => handleSelect(activity)}
+								className='p-2 cursor-pointer w-1/2 bg-white dark:bg-gray-800 border rounded shadow '
+							>
+								<h4>{activity.name}</h4>
+							</div>
+						);
+					})}
+				</div>
 				<Modal
 					isOpen={isModalOpen}
 					onClose={() => setIsModalOpen(false)}
