@@ -3,12 +3,10 @@
 import { useState, useEffect } from 'react';
 import getDailyTotal from '@/lib/carbon/getDailyTotal';
 import getYesterdayTotal from '@/lib/carbon/getYesterdayTotal';
-import { IconTrendingUp, IconTrendingDown } from '@tabler/icons-react';
 
 export default function DailyEmissions({ isModalOpen }) {
 	const [dailyTotal, setDailyTotal] = useState(0);
 	const [yesterdaysTotal, setYesterdaysTotal] = useState(0);
-	const [difference, setDifference] = useState(0);
 
 	const getTotal = async () => {
 		const todayTotal = await getDailyTotal();
@@ -16,9 +14,6 @@ export default function DailyEmissions({ isModalOpen }) {
 
 		const yesterdayTotal = await getYesterdayTotal();
 		setYesterdaysTotal(yesterdayTotal);
-
-		const result = todayTotal - yesterdayTotal;
-		setDifference(result.toFixed(2));
 	};
 
 	useEffect(() => {

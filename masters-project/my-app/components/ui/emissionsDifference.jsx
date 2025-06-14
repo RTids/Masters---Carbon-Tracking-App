@@ -1,14 +1,49 @@
+'use client';
+
 import { Card, CardContent, CardTitle } from './card';
+import { IconTrendingUp, IconTrendingDown } from '@tabler/icons-react';
+import { useState, useEffect } from 'react';
+import { getYesterdayDifference } from '@/lib/carbon/getDifference';
 
 export default function EmissionsDifference() {
+	const [difference, setDifference] = useState('Loading...');
+	const [differenceSign, setDifferenceSign] = useState(0);
+
+	const fetchDifference = async () => {
+		const result = await getYesterdayDifference();
+		setDifference(result);
+		setDifferenceSign(Math.sign(result));
+	};
+
+	useEffect(() => {
+		fetchDifference();
+	}, []);
+
 	return (
-		<div className='flex flex-col justify-center items-center gap-3 border-b-7 w-2/3 pb-3'>
+		<div className='flex flex-col justify-center items-center gap-3 w-2/3 pb-3'>
 			<div className='flex flex-row justify-center items-center gap-5'>
-				<Card className='p-5 border-solid sm:h-[100px] sm:w-[300px] flex flex-col items-center w-2/3'>
-					<CardTitle>Yesterday</CardTitle>
+				<Card className='p-5 sm:h-[100px] sm:w-[300px] flex flex-col items-center justify-center w-2/3 relative'>
+					<CardTitle className='text-md mb-2 absolute top-3'>
+						Yesterday
+					</CardTitle>
+					<CardContent className='flex flex-1 flex-row items-center justify-center gap-2 text-center h-full w-full pt-5'>
+						{differenceSign === 1 ? (
+							<IconTrendingUp color='red' size={32} />
+						) : differenceSign === -1 ? (
+							<IconTrendingDown color='green' size={32} />
+						) : (
+							''
+						)}
+						<p className='text-lg font-semibold'>{difference}</p>
+					</CardContent>
 				</Card>
-				<Card className='p-5 border-solid sm:h-[100px] sm:w-[300px] flex flex-col items-center w-2/3'>
-					<CardTitle>Previous Week</CardTitle>
+				<Card className='p-5 sm:h-[100px] sm:w-[300px] flex flex-col items-center justify-center w-2/3 relative'>
+					<CardTitle className='text-md mb-2 absolute top-3'>
+						Previous Week
+					</CardTitle>
+					<CardContent className='flex flex-1 flex-row items-center justify-center gap-2 text-center h-full w-full pt-5'>
+						Coming soon...
+					</CardContent>
 				</Card>
 			</div>
 		</div>
