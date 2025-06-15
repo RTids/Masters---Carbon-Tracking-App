@@ -9,7 +9,7 @@ import WelcomeMessage from '@/components/ui/welcomeMessage';
 import Loading from '@/components/ui/loading';
 import getProfileData from '../../lib/user/getProfile';
 import QuickAccessList from '@/components/ui/quickAccessList';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/buttons/button';
 import NavBar from '@/components/ui/navBar';
 import DailyEmissions from '@/components/ui/dailyEmissions';
 import RandomTip from '@/components/ui/randomTip';

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import updateProfile from '@/lib/user/updateProfile';
 import getProfileData from '@/lib/user/getProfile';
-import { Button } from './button';
+import { Button } from './buttons/button';
 
 export default function UpdateProfile({ onSuccess, onError }) {
 	const [firstName, setFirstName] = useState('');
@@ -49,7 +49,7 @@ export default function UpdateProfile({ onSuccess, onError }) {
 						placeholder={firstName}
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
-                        required
+						required
 						className='bg-primary text-primary-foreground w-1/2'
 					></input>
 				</div>
@@ -62,7 +62,7 @@ export default function UpdateProfile({ onSuccess, onError }) {
 						placeholder={lastName}
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
-                        required
+						required
 						className='bg-primary text-primary-foreground w-1/2'
 					></input>
 				</div>

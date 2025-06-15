@@ -6,17 +6,17 @@ import { useState, useEffect } from 'react';
 import { getYesterdayDifference } from '@/lib/carbon/getDifference';
 
 export default function EmissionsDifference() {
-	const [difference, setDifference] = useState('Loading...');
-	const [differenceSign, setDifferenceSign] = useState(0);
+	const [yesterdayDifference, setYesterdayDifference] = useState('Loading...');
+	const [yesterdayDifferenceSign, setYesterdayDifferenceSign] = useState(0);
 
-	const fetchDifference = async () => {
+	const fetchDifferences = async () => {
 		const result = await getYesterdayDifference();
-		setDifference(result);
-		setDifferenceSign(Math.sign(result));
+		setYesterdayDifference(result);
+		setYesterdayDifferenceSign(Math.sign(result));
 	};
 
 	useEffect(() => {
-		fetchDifference();
+		fetchDifferences();
 	}, []);
 
 	return (
@@ -27,14 +27,14 @@ export default function EmissionsDifference() {
 						Yesterday
 					</CardTitle>
 					<CardContent className='flex flex-1 flex-row items-center justify-center gap-2 text-center h-full w-full pt-5'>
-						{differenceSign === 1 ? (
+						{yesterdayDifferenceSign === 1 ? (
 							<IconTrendingUp color='red' size={32} />
-						) : differenceSign === -1 ? (
+						) : yesterdayDifferenceSign === -1 ? (
 							<IconTrendingDown color='green' size={32} />
 						) : (
 							''
 						)}
-						<p className='text-lg font-semibold'>{difference}</p>
+						<p className='text-lg font-semibold'>{yesterdayDifference}</p>
 					</CardContent>
 				</Card>
 				<Card className='p-5 sm:h-[100px] sm:w-[300px] flex flex-col items-center justify-center w-2/3 relative'>

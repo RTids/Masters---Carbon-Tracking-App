@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 //Import custom components
 import ProtectedRoute from '@/components/protectedRoute';
 import ActivitySearch from '@/components/ui/activitySearch';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/buttons/button';
 import NavBar from '@/components/ui/navBar';
 import CategoryGrid from '@/components/ui/categoryGrid';
 import Link from 'next/link';

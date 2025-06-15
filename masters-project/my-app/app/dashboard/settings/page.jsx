@@ -2,9 +2,10 @@
 
 import ProtectedRoute from '@/components/protectedRoute';
 import NavBar from '@/components/ui/navBar';
-import SignOutButton from '@/components/ui/signOutButton';
+import SignOutButton from '@/components/ui/buttons/signOutButton';
 import UpdateProfile from '@/components/ui/updateProfile';
 import { toast } from 'sonner';
+import AccountDeleteButton from '@/components/ui/buttons/deleteAccountButton';
 
 export default function Settings() {
 	return (
@@ -17,6 +18,7 @@ export default function Settings() {
 					onError={(err) => toast.error(err)}
 				/>
 				<SignOutButton />
+				<AccountDeleteButton />
 			</div>
 		</ProtectedRoute>
 	);

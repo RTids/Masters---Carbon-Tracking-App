@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import logActivity from '@/lib/carbon/logActivity';
-import { Button } from './button';
+import { Button } from './buttons/button';
 import { formatUnits } from '@/utils/formatting';
 
 export default function LogActivityForm({ activity, onSuccess, onError }) {

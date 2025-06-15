@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
-import { Button } from './button';
+import { Button } from './buttons/button';
 import { Card } from './card';
 
 export default function Modal({ isOpen, onClose, children }) {

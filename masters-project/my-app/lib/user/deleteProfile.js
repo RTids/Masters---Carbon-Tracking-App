@@ -1,6 +1,6 @@
 import { createClient } from '@/utils/supabase/client';
 
-export default async function updateProfile(firstName, lastName) {
+export default async function deleteAccount() {
 	const supabase = createClient();
 	const { data: sessionData, error: sessionError } =
 		await supabase.auth.getUser();
@@ -10,12 +10,14 @@ export default async function updateProfile(firstName, lastName) {
 
 	const { error: supabaseError } = await supabase
 		.from('profiles')
-		.update({ first_name: firstName, last_name: lastName })
+		.delete()
 		.eq('id', sessionData.user.id);
 
 	if (supabaseError) {
 		return { error: supabaseError.message };
 	}
+	const { error } = await supabase.auth.signOut();
+	if (error) throw error;
 
 	return { success: true };
 }

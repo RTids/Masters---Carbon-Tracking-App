@@ -1,4 +1,4 @@
-import { Button } from './button';
+import { Button } from './buttons/button';
 import Link from 'next/link';
 
 export default function CategoryGrid() {

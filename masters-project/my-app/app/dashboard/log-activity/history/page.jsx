@@ -4,7 +4,7 @@ import ProtectedRoute from '@/components/protectedRoute';
 import NavBar from '@/components/ui/navBar';
 import displayActivityHistory from '@/lib/carbon/displayActivityHistory';
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/buttons/button';
 import { toast } from 'sonner';
 import deleteActivity from '@/lib/carbon/deleteActivity';
 

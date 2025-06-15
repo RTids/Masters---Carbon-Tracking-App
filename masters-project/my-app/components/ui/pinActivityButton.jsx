@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from './button';
+import { Button } from './buttons/button';
 import getPinnedActivities from '@/lib/carbon/getPinnedActivities';
 import { useState, useEffect } from 'react';
 import pinActivity from '@/lib/carbon/pinActivity';

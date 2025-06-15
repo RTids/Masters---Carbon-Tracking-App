@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/buttons/button';
 import { cn } from '@/lib/utils';
 
 const CarouselContext = createContext(null);
