@@ -26,7 +26,7 @@ export default function Modal({ isOpen, onClose, children }) {
 					display: 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
-					zIndex: 1000,
+					zIndex: 100,
 					color: 'black',
 				}}
 				onClick={onClose} // close modal if background clicked

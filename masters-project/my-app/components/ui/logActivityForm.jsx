@@ -4,16 +4,26 @@ import { useState } from 'react';
 import logActivity from '@/lib/carbon/logActivity';
 import { Button } from './buttons/button';
 import { formatUnits } from '@/utils/formatting';
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { CalendarIcon } from 'lucide-react';
+import { format } from 'date-fns';
 
 export default function LogActivityForm({ activity, onSuccess, onError }) {
 	const [amount, setAmount] = useState('');
 	const [loading, setLoading] = useState(false);
+	const [date, setDate] = useState(new Date());
+	const [open, setOpen] = useState(false);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
 
-		const result = await logActivity(amount, activity);
+		const result = await logActivity(amount, activity, date);
 
 		setLoading(false);
 
@@ -51,6 +61,28 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 						{formatUnits(activity.unit)}
 					</label>
 				</div>
+				<Popover open={open} onOpenChange={setOpen}>
+					<PopoverTrigger asChild>
+						<Button
+							variant='outline'
+							data-empty={!date}
+							className='data-[empty=true]:text-muted-foreground w-[280px] justify-start text-left font-normal'
+						>
+							<CalendarIcon />
+							{date ? format(date, 'PPP') : <span>Pick a date</span>}
+						</Button>
+					</PopoverTrigger>
+					<PopoverContent className='w-auto p-0'>
+						<Calendar
+							mode='single'
+							selected={date}
+							onSelect={(date) => {
+								setDate(date.toISOString());
+								setOpen(false);
+							}}
+						/>
+					</PopoverContent>
+				</Popover>
 
 				<Button type='submit' disabled={loading} variant='outline'>
 					{loading ? 'Logging...' : 'Log Activity'}
