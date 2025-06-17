@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
-import Modal from './modal';
+//External Libraries / Modules
+import { useState } from 'react';
 import { toast } from 'sonner';
 
-//Import Components
+//Internal Components
 import LogActivityForm from './logActivityForm';
 import PinActivityButton from './pinActivityButton';
+import Modal from './modal';
 
-//Import Functions/Hooks
+//Custom Hooks / Functions
 import { useActivitySearch } from '@/app/hooks/useActivitySearch';
 
 export default function ActivitySearch({
@@ -25,6 +26,7 @@ export default function ActivitySearch({
 		clearSearch,
 	} = useActivitySearch(activityList);
 
+	//If the activities list has not yet loaded and is showing empty, show this:
 	if (!activityList) return <p>Loading activities...</p>;
 
 	//When clicking an activity in the search list, open modal and set selected activity

@@ -1,36 +1,27 @@
 'use client';
-import { useEffect, useState, useContext } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
-//Import our components
+//External Libraries / Modules
+import { useState } from 'react';
+import Link from 'next/link';
+
+//Internal Components
 import ProtectedRoute from '@/components/protectedRoute';
 import WelcomeMessage from '@/components/ui/welcomeMessage';
-import Loading from '@/components/ui/loading';
-import getProfileData from '../../lib/user/getProfile';
 import QuickAccessList from '@/components/ui/quickAccessList';
 import { Button } from '@/components/ui/buttons/button';
 import NavBar from '@/components/ui/navBar';
 import DailyEmissions from '@/components/ui/dailyEmissions';
 import RandomTip from '@/components/ui/randomTip';
 
-export default function Dashboard() {
-	const [profile, setProfile] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const router = useRouter();
+//Custom Hooks / Functions
+import { useProfileData } from '../hooks/useProfileData';
 
-	useEffect(() => {
-		const fetchProfileData = async () => {
-			const data = await getProfileData();
-			setProfile(data);
-			setIsLoading(false);
-		};
-		fetchProfileData();
-	}, [router]);
+export default function Dashboard() {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const { profile, isLoading } = useProfileData();
 
 	if (isLoading) {
-		return <Loading />;
+		return <h2>Loading...</h2>;
 	}
 
 	return (

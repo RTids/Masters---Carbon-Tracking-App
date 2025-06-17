@@ -34,7 +34,10 @@ export default function EmissionsDifference() {
 						) : (
 							''
 						)}
-						<p className='text-lg font-semibold'>{yesterdayDifference}</p>
+						<p className='text-lg font-semibold'>
+							{yesterdayDifference}{' '}
+							<span className='text-sm font-thin'> kgCO₂e</span>
+						</p>
 					</CardContent>
 				</Card>
 				<Card className='p-5 sm:h-[100px] sm:w-[300px] flex flex-col items-center justify-center w-2/3 relative'>
