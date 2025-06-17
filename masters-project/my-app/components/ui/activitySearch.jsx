@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import Modal from './modal';
 import { toast } from 'sonner';
+
+//Import Components
 import LogActivityForm from './logActivityForm';
 import PinActivityButton from './pinActivityButton';
+
+//Import Functions/Hooks
+import { useActivitySearch } from '@/app/hooks/useActivitySearch';
 
 export default function ActivitySearch({
 	activityList,
@@ -10,17 +15,17 @@ export default function ActivitySearch({
 	setIsModalOpen,
 }) {
 	const [selectedActivity, setSelectedActivity] = useState(null);
-	const [searchTerm, setSearchTerm] = useState('');
+
+	const {
+		searchTerm,
+		setSearchTerm,
+		filteredActivities,
+		hasResults,
+		isSearching,
+		clearSearch,
+	} = useActivitySearch(activityList);
 
 	if (!activityList) return <p>Loading activities...</p>;
-
-	const filteredActivites = activityList.filter(
-		(activity) =>
-			!activity.tags?.includes('hidden') &&
-			activity.tags?.some((tag) =>
-				tag.toLowerCase().startsWith(searchTerm.toLowerCase())
-			)
-	);
 
 	//When clicking an activity in the search list, open modal and set selected activity
 	const handleSelect = (activity) => {
@@ -36,13 +41,14 @@ export default function ActivitySearch({
 					type='text'
 					placeholder='Search Activity...'
 					id='activitySearchBox'
+					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 				></input>
-				{searchTerm.length > 0 && (
+				{isSearching && (
 					<div className='absolute top-full left-0 right-0 bg-white dark:bg-gray-800 border rounded shadow z-10 max-h-60 overflow-y-auto mt-2'>
-						{filteredActivites.length > 0 ? (
+						{hasResults ? (
 							<ul>
-								{filteredActivites.map((activity) => {
+								{filteredActivities.map((activity) => {
 									return (
 										<li
 											className='cursor-pointer'
@@ -72,7 +78,7 @@ export default function ActivitySearch({
 					activity={selectedActivity}
 					onSuccess={() => {
 						setIsModalOpen(false);
-						setSearchTerm('');
+						clearSearch();
 						toast.success('Successfully logged activity!');
 					}}
 					onError={(err) => toast.error(err)}
