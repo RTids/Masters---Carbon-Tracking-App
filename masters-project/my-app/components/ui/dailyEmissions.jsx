@@ -10,7 +10,7 @@ export default function DailyEmissions({ isModalOpen }) {
 
 	const getTotal = async () => {
 		const todayTotal = await getDailyTotal();
-		setDailyTotal(todayTotal);
+		setDailyTotal(todayTotal.total);
 
 		const yesterdayTotal = await getYesterdayTotal();
 		setYesterdaysTotal(yesterdayTotal);

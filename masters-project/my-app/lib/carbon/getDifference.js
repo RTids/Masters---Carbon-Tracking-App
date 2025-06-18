@@ -9,6 +9,6 @@ export function getDifference(input1, input2) {
 export async function getYesterdayDifference() {
 	const todayTotal = await getDailyTotal();
 	const yesterdayTotal = await getYesterdayTotal();
-	const result = todayTotal - yesterdayTotal;
+	const result = todayTotal.total - yesterdayTotal;
 	return result.toFixed(2);
 }

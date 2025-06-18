@@ -25,5 +25,10 @@ export default async function getDailyTotal() {
 		return total + item.calculated_emissions;
 	}, 0);
 
-	return dailyEmissions;
+	const dailyEmissionsObject = {
+		total: dailyEmissions,
+		date: today,
+	};
+
+	return dailyEmissionsObject;
 }

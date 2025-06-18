@@ -22,9 +22,9 @@ export default function EmissionsDifference() {
 	return (
 		<div className='flex flex-col justify-center items-center gap-3 w-2/3 pb-3'>
 			<div className='flex flex-row justify-center items-center gap-5'>
-				<Card className='p-5 sm:h-[100px] sm:w-[300px] flex flex-col items-center justify-center w-2/3 relative'>
-					<CardTitle className='text-md mb-2 absolute top-3'>
-						Yesterday
+				<Card className='p-5 sm:h-[60px] sm:w-[300px] flex flex-col items-center justify-center w-2/3 relative'>
+					<CardTitle className='text-sm mb-2 absolute top-1'>
+						Difference from Yesterday
 					</CardTitle>
 					<CardContent className='flex flex-1 flex-row items-center justify-center gap-2 text-center h-full w-full pt-5'>
 						{yesterdayDifferenceSign === 1 ? (
@@ -34,14 +34,14 @@ export default function EmissionsDifference() {
 						) : (
 							''
 						)}
-						<p className='text-lg font-semibold'>
+						<p className='text-md font-semibold'>
 							{yesterdayDifference}{' '}
 							<span className='text-sm font-thin'> kgCO₂e</span>
 						</p>
 					</CardContent>
 				</Card>
-				<Card className='p-5 sm:h-[100px] sm:w-[300px] flex flex-col items-center justify-center w-2/3 relative'>
-					<CardTitle className='text-md mb-2 absolute top-3'>
+				<Card className='p-5 sm:h-[60px] sm:w-[300px] flex flex-col items-center justify-center w-2/3 relative'>
+					<CardTitle className='text-sm mb-2 absolute top-1'>
 						Previous Week
 					</CardTitle>
 					<CardContent className='flex flex-1 flex-row items-center justify-center gap-2 text-center h-full w-full pt-5'>
