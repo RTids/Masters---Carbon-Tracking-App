@@ -1,12 +1,18 @@
 'use client';
 
-import ProtectedRoute from '@/components/protectedRoute';
-import NavBar from '@/components/ui/navBar';
-import displayActivityHistory from '@/lib/carbon/displayActivityHistory';
+//External Libraries / Modules
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/buttons/button';
 import { toast } from 'sonner';
+
+//Internal Components
+import ProtectedRoute from '@/components/protectedRoute';
+import NavBar from '@/components/ui/navBar';
+
+//Custom Hooks / Functions
+import displayActivityHistory from '@/lib/carbon/displayActivityHistory';
 import deleteActivity from '@/lib/carbon/deleteActivity';
+import { formatUnits, formatCategory } from '@/utils/formatting';
 
 export default function ActivityHistory() {
 	const [activityHistoryList, setActivityHistoryList] = useState(null);
@@ -44,10 +50,10 @@ export default function ActivityHistory() {
 								<div className='w-full sm:w-1/3'>
 									<p className='font-bold'>{activity.activityName}</p>
 									<p className='text-sm text-gray-600'>
-										{activity.category} | {activity.date}
+										{formatCategory(activity.category)} | {activity.date}
 									</p>
 									<p>
-										{activity.amount} {activity.units}
+										{activity.amount} {formatUnits(activity.units)}
 										{activity.amount > 1 ? 's' : ''} → {activity.totalEmissions}{' '}
 										kg CO₂e
 									</p>

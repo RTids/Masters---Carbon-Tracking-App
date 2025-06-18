@@ -29,7 +29,7 @@ export default function DailyEmissions({ isModalOpen }) {
 				{dailyTotal.toFixed(2)}
 				<span className='text-sm sm:text-lg font-thin'> kgCO₂e</span>
 			</p>
-			<p className='font-thin mt-3 sm:font-base font-sm'>
+			<p className='font-thin mt-1 sm:font-base font-sm'>
 				Yesterday's Total: {yesterdaysTotal.toFixed(2)} kgCO₂e
 			</p>
 		</div>
