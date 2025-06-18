@@ -13,7 +13,7 @@ export const useChartFormattedData = (timeframe) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			let rawData = [];
-			if (timeframe === 'weekly') {
+			if (timeframe === 'week') {
 				const weeklyData = await getPreviousSixDays();
 				const todayData = await getDailyTotal();
 				rawData = [...weeklyData, todayData];
