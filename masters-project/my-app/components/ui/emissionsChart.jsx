@@ -4,13 +4,14 @@
 import { useState } from 'react';
 import {
 	DropdownMenu,
+	DropdownMenuTrigger,
 	DropdownMenuContent,
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
-	DropdownMenuTrigger,
 	DropdownMenuRadioGroup,
 	DropdownMenuRadioItem,
-} from '@radix-ui/react-dropdown-menu';
+} from '@/components/ui/dropdown-menu';
+import { useTheme } from 'next-themes';
 
 //Internal Components
 import DrawLineChart from '../charts/lineChart';
@@ -21,13 +22,20 @@ import { capitalize } from '@/utils/formatting';
 
 export default function EmissionsChart() {
 	const [position, setPosition] = useState('week');
+
+	const { theme, resolvedTheme } = useTheme();
+	const isDark = resolvedTheme === 'dark';
+
+	const toolTipColour = isDark ? '#1a202c' : '#ffffff';
+	const textColour = isDark ? '#ffffff' : '#1a202c';
+
 	return (
-		<div>
+		<div className='max-w-2/3 flex flex-col items-center'>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button variant='outline'>{capitalize(position)}</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className='w-40 bg-[#0f172b] z-500'>
+				<DropdownMenuContent className='w-50 z-300'>
 					<DropdownMenuLabel>Select Time Frame</DropdownMenuLabel>
 					<DropdownMenuSeparator />
 					<DropdownMenuRadioGroup value={position} onValueChange={setPosition}>

@@ -11,11 +11,13 @@ import { useChartFormattedData } from '@/app/hooks/useChartFormattedData';
 export default function DrawLineChart({ timeframe }) {
 	const { data, loading } = useChartFormattedData(timeframe);
 
-	const { theme } = useTheme();
-	const isDark = theme === 'dark';
+	const { theme, resolvedTheme } = useTheme();
+	const isDark = resolvedTheme === 'dark';
 
 	const axisColour = isDark ? '#ccc' : '#333';
 	const lineColour = isDark ? '#4fd1c5' : '#3182ce';
+	const toolTipColour = isDark ? '#1a202c' : '#ffffff';
+	const textColour = isDark ? '#ffffff' : '#1a202c';
 
 	if (loading) return <Loading />;
 
@@ -26,9 +28,9 @@ export default function DrawLineChart({ timeframe }) {
 			<YAxis dataKey='total' />
 			<Tooltip
 				contentStyle={{
-					backgroundColor: isDark ? '#1a202c' : '#fff',
+					backgroundColor: toolTipColour,
 					borderColor: isDark ? '#4fd1c5' : '#3182ce',
-					color: isDark ? '#f0f0f0' : '#222',
+					color: textColour,
 				}}
 			/>
 		</LineChart>
