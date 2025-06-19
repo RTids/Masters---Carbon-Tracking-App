@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardContent, CardTitle } from './card';
+import { Card, CardContent, CardTitle } from './shadcn/card';
 import { IconTrendingUp, IconTrendingDown } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
 import { getYesterdayDifference } from '@/lib/carbon/getDifference';

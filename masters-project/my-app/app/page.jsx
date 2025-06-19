@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 import Link from 'next/link';
-import { ModeToggle } from '@/components/ui/darkModeToggleButton';
+import { ModeToggle } from '@/components/ui/buttons/darkModeToggleButton';
 
 export default function Home() {
 	return (

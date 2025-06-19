@@ -3,7 +3,7 @@
 import { use, useEffect, useState } from 'react';
 import ProtectedRoute from '@/components/protectedRoute';
 import NavBar from '@/components/ui/navBar';
-import Modal from '@/components/ui/modal';
+import Modal from '@/components/ui/shadcn/modal';
 import PinActivityButton from '@/components/ui/pinActivityButton';
 import LogActivityForm from '@/components/ui/logActivityForm';
 import getCategoryActivitiesList from '@/lib/carbon/getCategoryActivitiesList';

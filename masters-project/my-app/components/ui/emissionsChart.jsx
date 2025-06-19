@@ -10,7 +10,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuRadioGroup,
 	DropdownMenuRadioItem,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/ui/shadcn/dropdown-menu';
 import { useTheme } from 'next-themes';
 
 //Internal Components

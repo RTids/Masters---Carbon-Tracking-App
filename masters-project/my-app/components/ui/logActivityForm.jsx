@@ -8,8 +8,8 @@ import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
+} from '@/components/ui/shadcn/popover';
+import { Calendar } from '@/components/ui/shadcn/calendar';
 import { CalendarIcon } from 'lucide-react';
 import { format } from 'date-fns';
 

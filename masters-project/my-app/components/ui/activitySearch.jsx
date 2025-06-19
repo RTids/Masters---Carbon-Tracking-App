@@ -5,7 +5,7 @@ import { toast } from 'sonner';
 //Internal Components
 import LogActivityForm from './logActivityForm';
 import PinActivityButton from './pinActivityButton';
-import Modal from './modal';
+import Modal from './shadcn/modal';
 
 //Custom Hooks / Functions
 import { useActivitySearch } from '@/app/hooks/useActivitySearch';

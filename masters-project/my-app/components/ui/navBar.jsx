@@ -1,6 +1,6 @@
 'use client';
 
-import { ModeToggle } from './darkModeToggleButton';
+import { ModeToggle } from './buttons/darkModeToggleButton';
 import Logo from '@/lib/ui/logo';
 import { useRouter } from 'next/navigation';
 import { Button } from './buttons/button';

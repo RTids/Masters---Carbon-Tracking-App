@@ -1,6 +1,6 @@
 import displayPinnedList from '@/lib/carbon/displayPinnedActivities';
 import { useEffect, useState } from 'react';
-import Modal from './modal';
+import Modal from './shadcn/modal';
 import PinActivityButton from './pinActivityButton';
 import LogActivityForm from './logActivityForm';
 import { toast } from 'sonner';
@@ -10,8 +10,8 @@ import {
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
-} from './carousel';
-import { Card, CardContent, CardTitle } from './card';
+} from './shadcn/carousel';
+import { Card, CardContent, CardTitle } from './shadcn/card';
 import { activityIcons } from '@/lib/ui/icons';
 
 export default function QuickAccessList({ isModalOpen, setIsModalOpen }) {
