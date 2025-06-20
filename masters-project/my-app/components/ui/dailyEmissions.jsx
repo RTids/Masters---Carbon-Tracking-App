@@ -1,12 +1,22 @@
 'use client';
 
+//External Libraries / Modules
 import { useState, useEffect } from 'react';
-import getDailyTotal from '@/lib/carbon/getDailyTotal';
-import getYesterdayTotal from '@/lib/carbon/getYesterdayTotal';
+
+//Internal Components
+import KGCO2E from '@/lib/ui/kgCO2e';
+
+//External Hooks / Functions
+import getDailyTotal from '@/lib/carbon/totals/getDailyTotal';
+import getYesterdayTotal from '@/lib/carbon/totals/getYesterdayTotal';
+import getPreviousWeekTotal from '@/lib/carbon/totals/getPreviousWeekTotal';
+import getCurrentWeekTotal from '@/lib/carbon/totals/getCurrentWeekTotal';
 
 export default function DailyEmissions({ isModalOpen }) {
 	const [dailyTotal, setDailyTotal] = useState(0);
 	const [yesterdaysTotal, setYesterdaysTotal] = useState(0);
+	const [previousWeekTotal, setPreviousWeekTotal] = useState(0);
+	const [currentWeekTotal, setCurrentWeekTotal] = useState(0);
 
 	const getTotal = async () => {
 		const todayTotal = await getDailyTotal();
@@ -14,6 +24,12 @@ export default function DailyEmissions({ isModalOpen }) {
 
 		const yesterdayTotal = await getYesterdayTotal();
 		setYesterdaysTotal(yesterdayTotal);
+
+		const lastWeekTotal = await getPreviousWeekTotal();
+		setPreviousWeekTotal(lastWeekTotal);
+
+		const thisWeekTotal = await getCurrentWeekTotal();
+		setCurrentWeekTotal(thisWeekTotal);
 	};
 
 	useEffect(() => {
@@ -27,10 +43,17 @@ export default function DailyEmissions({ isModalOpen }) {
 			</h2>
 			<p className='text-lg sm:text-lg font-bold'>
 				{dailyTotal.toFixed(2)}
-				<span className='text-sm sm:text-lg font-thin'> kgCO₂e</span>
+				<span className='text-sm sm:text-lg font-thin'>
+					{' '}
+					<KGCO2E />
+				</span>
 			</p>
 			<p className='font-thin mt-1 sm:font-base font-sm'>
-				Yesterday's Total: {yesterdaysTotal.toFixed(2)} kgCO₂e
+				Yesterday's Total: {yesterdaysTotal.toFixed(2)} <KGCO2E />
+			</p>
+			<p className='font-thin mt-1 sm:font-base font-sm'>
+				Current Week's Total: {currentWeekTotal.toFixed(2)} <KGCO2E /> ||
+				Previous Week's Total: {previousWeekTotal.toFixed(2)} <KGCO2E />
 			</p>
 		</div>
 	);

@@ -1,18 +1,32 @@
 'use client';
 
+//External Libraries / Modules
 import { Card, CardContent, CardTitle } from './shadcn/card';
 import { IconTrendingUp, IconTrendingDown } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
-import { getYesterdayDifference } from '@/lib/carbon/getDifference';
+
+//Internal Components
+import KGCO2E from '@/lib/ui/kgCO2e';
+
+//Custom Hooks / Functions
+import {
+	getYesterdayDifference,
+	getWeekDifference,
+} from '@/lib/carbon/totals/getDifference';
 
 export default function EmissionsDifference() {
 	const [yesterdayDifference, setYesterdayDifference] = useState('Loading...');
 	const [yesterdayDifferenceSign, setYesterdayDifferenceSign] = useState(0);
+	const [weekDifference, setWeekDifference] = useState('Loading...');
+	const [weekDifferenceSign, setWeekDifferenceSign] = useState(0);
 
 	const fetchDifferences = async () => {
-		const result = await getYesterdayDifference();
-		setYesterdayDifference(result);
-		setYesterdayDifferenceSign(Math.sign(result));
+		const yesterdayResult = await getYesterdayDifference();
+		setYesterdayDifference(yesterdayResult);
+		setYesterdayDifferenceSign(Math.sign(yesterdayResult));
+		const weekResult = await getWeekDifference();
+		setWeekDifference(weekResult);
+		setWeekDifferenceSign(Math.sign(weekResult));
 	};
 
 	useEffect(() => {
@@ -36,7 +50,7 @@ export default function EmissionsDifference() {
 						)}
 						<div className='flex flex-row gap-1 text-xs sm:text-base font-semibold w-1/2 items-center justify-center'>
 							<span>{yesterdayDifference}</span>
-							<span className='text-xs sm:text-sm font-thin'> kgCO₂e</span>
+							<KGCO2E />
 						</div>
 					</CardContent>
 				</Card>
@@ -45,16 +59,16 @@ export default function EmissionsDifference() {
 						Previous Week
 					</CardTitle>
 					<CardContent className='flex flex-1 flex-row items-center justify-center gap-4 text-center h-full w-full pt-2 sm:pt-5 px-3 sm:px-6'>
-						{yesterdayDifferenceSign === 1 ? (
+						{weekDifferenceSign === 1 ? (
 							<IconTrendingUp color='red' size={32} />
-						) : yesterdayDifferenceSign === -1 ? (
+						) : weekDifferenceSign === -1 ? (
 							<IconTrendingDown color='green' size={32} />
 						) : (
 							''
 						)}
 						<div className='flex flex-row gap-1 text-xs sm:text-base font-semibold w-1/2 items-center justify-center'>
-							<span>Soon</span>
-							<span className='text-xs sm:text-sm font-thin'> kgCO₂e</span>
+							<span>{weekDifference}</span>
+							<KGCO2E />
 						</div>
 					</CardContent>
 				</Card>

@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react';
 
 //Custom Functions / Hooks
-import getPreviousSixDays from '@/lib/carbon/getPreviousSixDays';
-import getDailyTotal from '@/lib/carbon/getDailyTotal';
+import getPreviousSixDays from '@/lib/carbon/totals/getPreviousSixDays';
+import getDailyTotal from '@/lib/carbon/totals/getDailyTotal';
 import { formatDate } from '@/utils/formatting';
 
 export const useChartFormattedData = (timeframe) => {
