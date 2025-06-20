@@ -21,6 +21,11 @@ export default function DrawLineChart({ timeframe }) {
 
 	if (loading) return <Loading />;
 
+	console.log(data);
+
+	if (data.length < 1)
+		return <div className='pt-5'>No data for this timeframe.</div>;
+
 	return (
 		<LineChart width={400} height={150} data={data}>
 			<Line type='monotone' dataKey='total' stroke={lineColour} />

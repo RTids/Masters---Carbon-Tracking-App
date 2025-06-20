@@ -49,9 +49,5 @@ export default async function getPreviousWeekTotal() {
 	// Sum all totals (in case there are multiple rows)
 	const weeklyTotal = totalData.reduce((sum, row) => sum + row.total, 0);
 
-	console.log('Previous week records:', totalData);
-	console.log('Range:', startOfPreviousWeekStr, '→', startOfThisWeekStr);
-	console.log('Weekly total:', weeklyTotal);
-
 	return weeklyTotal;
 }
