@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import getPreviousSixDays from '@/lib/carbon/totals/getPreviousSixDays';
 import getDailyTotal from '@/lib/carbon/totals/getDailyTotal';
 import { formatDate } from '@/utils/formatting';
+import getPreviousSixWeeks from '@/lib/carbon/totals/getPreviousSixWeeks';
 
 export const useChartFormattedData = (timeframe) => {
 	const [data, setData] = useState([]);
@@ -17,13 +18,28 @@ export const useChartFormattedData = (timeframe) => {
 				const weeklyData = await getPreviousSixDays();
 				const todayData = await getDailyTotal();
 				rawData = [...weeklyData, todayData];
+			} else if (timeframe === 'month') {
+				const monthlyData = await getPreviousSixWeeks();
+				rawData = [...monthlyData];
 			}
 
-			const formatted = rawData.map((item) => ({
-				...item,
-				total: item.total.toFixed(2),
-				date: formatDate(item.date),
-			}));
+			const formatted = rawData.map((item) => {
+				let dateKey;
+				if (timeframe === 'week') {
+					dateKey = item.date;
+				} else if (timeframe === 'month') {
+					dateKey = item.week_start;
+				}
+
+				console.log('item:', item);
+				console.log(dateKey);
+
+				return {
+					...item,
+					total: item.total.toFixed(2),
+					date: formatDate(dateKey),
+				};
+			});
 
 			setData(formatted);
 			setLoading(false);

@@ -21,16 +21,14 @@ export default function DrawLineChart({ timeframe }) {
 
 	if (loading) return <Loading />;
 
-	console.log(data);
-
 	if (data.length < 1)
 		return <div className='pt-5'>No data for this timeframe.</div>;
 
 	return (
-		<LineChart width={400} height={150} data={data}>
+		<LineChart width={400} height={200} data={data}>
 			<Line type='monotone' dataKey='total' stroke={lineColour} />
 			<XAxis dataKey='date' stroke={axisColour} />
-			<YAxis dataKey='total' />
+			<YAxis dataKey='total' domain={['auto', 'auto']} tickCount={5} />
 			<Tooltip
 				contentStyle={{
 					backgroundColor: toolTipColour,
