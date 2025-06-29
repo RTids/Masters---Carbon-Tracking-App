@@ -31,9 +31,6 @@ export const useChartFormattedData = (timeframe) => {
 					dateKey = item.week_start;
 				}
 
-				console.log('item:', item);
-				console.log(dateKey);
-
 				return {
 					...item,
 					total: item.total.toFixed(2),

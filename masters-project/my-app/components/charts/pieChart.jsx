@@ -2,8 +2,8 @@
 
 //External Libaries / Modules
 import {
-	Line,
-	LineChart,
+	Pie,
+	PieChart,
 	ResponsiveContainer,
 	Tooltip,
 	XAxis,
@@ -32,17 +32,21 @@ export default function DrawLineChart({ timeframe }) {
 		return <div className='pt-5'>No data for this timeframe.</div>;
 
 	return (
-		<LineChart width={400} height={200} data={data}>
-			<Line type='monotone' dataKey='total' stroke={lineColour} />
-			<XAxis dataKey='date' stroke={axisColour} />
-			<YAxis dataKey='total' domain={['auto', 'auto']} tickCount={5} />
-			<Tooltip
-				contentStyle={{
-					backgroundColor: toolTipColour,
-					borderColor: isDark ? '#4fd1c5' : '#3182ce',
-					color: textColour,
-				}}
-			/>
-		</LineChart>
+		<ResponsiveContainer width={100%} height={100%}>
+			<PieChart width={400} height={200} data={data} activeShape={{
+      fill: 'red'
+    }}>
+				<Pie type='monotone' dataKey='category' stroke={lineColour} activeShape={{
+      fill: 'red'
+    }}/>
+				<Tooltip
+					contentStyle={{
+						backgroundColor: toolTipColour,
+						borderColor: isDark ? '#4fd1c5' : '#3182ce',
+						color: textColour,
+					}}
+				/>
+			</PieChart>
+		</ResponsiveContainer>
 	);
 }
