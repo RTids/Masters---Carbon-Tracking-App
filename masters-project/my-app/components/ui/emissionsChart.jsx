@@ -19,6 +19,7 @@ import { Button } from './buttons/button';
 
 //Custom Hooks / Functions
 import { capitalize } from '@/utils/formatting';
+import DrawPieChart from '../charts/pieChart';
 
 export default function EmissionsChart() {
 	const [position, setPosition] = useState('week');
@@ -46,6 +47,7 @@ export default function EmissionsChart() {
 				</DropdownMenuContent>
 			</DropdownMenu>
 			<DrawLineChart timeframe={position} />
+			<DrawPieChart timeframe={position} />
 		</div>
 	);
 }
