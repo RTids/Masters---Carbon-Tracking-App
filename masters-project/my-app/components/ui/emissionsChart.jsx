@@ -46,8 +46,17 @@ export default function EmissionsChart() {
 					</DropdownMenuRadioGroup>
 				</DropdownMenuContent>
 			</DropdownMenu>
-			<DrawLineChart timeframe={position} />
-			<DrawPieChart timeframe={position} />
+			<div className='sm:flex sm:flex-row justify-center items-center pt-4 pb-4 text-center w-full max-h-300'>
+				<div>
+					<h4>Emissions History</h4>
+					<DrawLineChart timeframe={position} />
+				</div>
+
+				<div>
+					<h4>Category Breakdown</h4>
+					<DrawPieChart timeframe={position} />
+				</div>
+			</div>
 		</div>
 	);
 }

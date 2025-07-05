@@ -13,7 +13,6 @@ export default function MyFootprint() {
 				<h1 className='pt-25 text-xl font-bold'>My Footprint</h1>
 				<DailyEmissions />
 				<EmissionsDifference />
-				<div>Category breakdown</div>
 				<EmissionsChart />
 			</div>
 		</ProtectedRoute>

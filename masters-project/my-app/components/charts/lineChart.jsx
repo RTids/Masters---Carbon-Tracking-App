@@ -32,7 +32,7 @@ export default function DrawLineChart({ timeframe }) {
 		return <div className='pt-5'>No data for this timeframe.</div>;
 
 	return (
-		<LineChart width={400} height={200} data={data}>
+		<LineChart width={300} height={300} data={data}>
 			<Line type='monotone' dataKey='total' stroke={lineColour} />
 			<XAxis dataKey='date' stroke={axisColour} />
 			<YAxis dataKey='total' domain={['auto', 'auto']} tickCount={5} />

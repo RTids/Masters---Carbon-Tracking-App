@@ -28,7 +28,7 @@ export default function DrawPieChart({ timeframe }) {
 		percent,
 		index,
 	}) => {
-		if (percent === 0) return null;npm
+		if (percent === 0) return null;
 		const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
 		const x = cx + radius * Math.cos(-midAngle * RADIAN);
 		const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -47,24 +47,27 @@ export default function DrawPieChart({ timeframe }) {
 	};
 
 	return (
-		<>
-			<h2>Pie</h2>
-			<PieChart width={400} height={200}>
+		<div>
+			<PieChart width={300} height={300}>
 				<Pie
 					data={data}
 					nameKey='name'
 					dataKey='value'
-					label={renderCustomizedLabel}
-					labelLine={false}
-					outerRadius={80}
+					label
+					labelLine={true}
 					fill='#8884d8'
+					outerRadius={60}
 				>
 					{data.map((entry, index) => (
 						<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
 					))}
 				</Pie>
-				<Legend />
+				<Legend
+					formatter={(value) => (
+						<span style={{ fontSize: '12px' }}>{value}</span>
+					)}
+				/>
 			</PieChart>
-		</>
+		</div>
 	);
 }

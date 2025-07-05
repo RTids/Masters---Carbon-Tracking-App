@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 //Custom Functions / Hooks
 import getPreviousSixDays from '@/lib/carbon/totals/getPreviousSixDays';
 import getDailyTotal from '@/lib/carbon/totals/getDailyTotal';
-import { formatDate } from '@/utils/formatting';
 import getPreviousSixWeeks from '@/lib/carbon/totals/getPreviousSixWeeks';
+import { formatCategory } from '@/utils/formatting';
 
 export const usePieChartFormattedData = (timeframe) => {
 	const [data, setData] = useState([]);
@@ -24,25 +24,29 @@ export const usePieChartFormattedData = (timeframe) => {
 			}
 
 			let categoryTotals = [
-				{ name: 'food-drink', value: 0 },
-				{ name: 'travel', value: 0 },
-				{ name: 'energy-home', value: 0 },
-				{ name: 'lifestyle', value: 0 },
+				{ name: 'Food/Drink', value: 0 },
+				{ name: 'Travel', value: 0 },
+				{ name: 'Energy/Home', value: 0 },
+				{ name: 'Lifestyle', value: 0 },
 			];
 
 			for (const item of rawData) {
 				const breakdown = item.category_breakdown || {};
 				for (const key in breakdown) {
-					const index = categoryTotals.findIndex((entry) => entry.name === key);
+					const index = categoryTotals.findIndex(
+						(entry) => entry.name === formatCategory(key)
+					);
 					if (index !== -1) {
 						categoryTotals[index].value += breakdown[key];
 					}
 				}
 			}
 
-			const formatted = categoryTotals;
+			const formatted = categoryTotals.map((entry) => ({
+				name: entry.name,
+				value: Math.round(entry.value * 100) / 100, // Will return number
+			}));
 
-			console.log(formatted);
 			setData(formatted);
 			setLoading(false);
 		};
