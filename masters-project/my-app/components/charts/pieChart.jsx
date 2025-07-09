@@ -1,7 +1,7 @@
 'use client';
 
 //External Libaries / Modules
-import { Pie, PieChart, Cell, Legend } from 'recharts';
+import { Pie, PieChart, Cell, Legend, ResponsiveContainer } from 'recharts';
 import { useTheme } from 'next-themes';
 //Internal Components
 import Loading from '../ui/loading';
@@ -47,27 +47,32 @@ export default function DrawPieChart({ timeframe }) {
 	};
 
 	return (
-		<div>
-			<PieChart width={300} height={300}>
-				<Pie
-					data={data}
-					nameKey='name'
-					dataKey='value'
-					label
-					labelLine={true}
-					fill='#8884d8'
-					outerRadius={60}
-				>
-					{data.map((entry, index) => (
-						<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-					))}
-				</Pie>
-				<Legend
-					formatter={(value) => (
-						<span style={{ fontSize: '12px' }}>{value}</span>
-					)}
-				/>
-			</PieChart>
+		<div className='flex justify-center items-center w-full max-w-xl mx-auto'>
+			<ResponsiveContainer width='100%' height={300}>
+				<PieChart width={300} height={300}>
+					<Pie
+						data={data}
+						nameKey='name'
+						dataKey='value'
+						label
+						labelLine={true}
+						fill='#8884d8'
+						outerRadius={60}
+					>
+						{data.map((entry, index) => (
+							<Cell
+								key={`cell-${index}`}
+								fill={COLORS[index % COLORS.length]}
+							/>
+						))}
+					</Pie>
+					<Legend
+						formatter={(value) => (
+							<span style={{ fontSize: '12px' }}>{value}</span>
+						)}
+					/>
+				</PieChart>
+			</ResponsiveContainer>
 		</div>
 	);
 }

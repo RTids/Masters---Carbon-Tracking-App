@@ -32,17 +32,21 @@ export default function DrawLineChart({ timeframe }) {
 		return <div className='pt-5'>No data for this timeframe.</div>;
 
 	return (
-		<LineChart width={300} height={300} data={data}>
-			<Line type='monotone' dataKey='total' stroke={lineColour} />
-			<XAxis dataKey='date' stroke={axisColour} />
-			<YAxis dataKey='total' domain={['auto', 'auto']} tickCount={5} />
-			<Tooltip
-				contentStyle={{
-					backgroundColor: toolTipColour,
-					borderColor: isDark ? '#4fd1c5' : '#3182ce',
-					color: textColour,
-				}}
-			/>
-		</LineChart>
+		<div className='flex justify-center items-center w-full max-w-xl mx-auto'>
+			<ResponsiveContainer width='100%' height={300}>
+				<LineChart width={300} height={300} data={data}>
+					<Line type='monotone' dataKey='total' stroke={lineColour} />
+					<XAxis dataKey='date' stroke={axisColour} />
+					<YAxis dataKey='total' domain={['auto', 'auto']} tickCount={5} />
+					<Tooltip
+						contentStyle={{
+							backgroundColor: toolTipColour,
+							borderColor: isDark ? '#4fd1c5' : '#3182ce',
+							color: textColour,
+						}}
+					/>
+				</LineChart>
+			</ResponsiveContainer>
+		</div>
 	);
 }

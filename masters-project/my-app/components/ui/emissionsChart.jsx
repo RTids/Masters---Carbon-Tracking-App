@@ -31,7 +31,7 @@ export default function EmissionsChart() {
 	const textColour = isDark ? '#ffffff' : '#1a202c';
 
 	return (
-		<div className='max-w-2/3 flex flex-col items-center'>
+		<div className='max-w-2/3 w-full flex flex-col items-center justify-center'>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button variant='outline'>{capitalize(position)}</Button>
@@ -47,12 +47,12 @@ export default function EmissionsChart() {
 				</DropdownMenuContent>
 			</DropdownMenu>
 			<div className='sm:flex sm:flex-row justify-center items-center pt-4 pb-4 text-center w-full max-h-300'>
-				<div>
+				<div className='w-full max-w-xl mx-auto'>
 					<h4>Emissions History</h4>
 					<DrawLineChart timeframe={position} />
 				</div>
 
-				<div>
+				<div className='w-full max-w-xl mx-auto'>
 					<h4>Category Breakdown</h4>
 					<DrawPieChart timeframe={position} />
 				</div>

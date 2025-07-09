@@ -48,11 +48,13 @@ export default function DailyEmissions({ isModalOpen }) {
 					<KGCO2E />
 				</span>
 			</p>
-			<p className='font-thin mt-1 sm:font-base font-sm'>
+			<p className='font-thin mt-1 sm:font-base text-sm'>
 				Yesterday's Total: {yesterdaysTotal.toFixed(2)} <KGCO2E />
 			</p>
-			<p className='font-thin mt-1 sm:font-base font-sm'>
-				Current Week's Total: {currentWeekTotal.toFixed(2)} <KGCO2E /> ||
+			<p className='font-thin mt-1 sm:font-base text-xs'>
+				Current Week's Total: {currentWeekTotal.toFixed(2)} <KGCO2E />
+			</p>
+			<p className='font-thin mt-1 sm:font-base text-xs'>
 				Previous Week's Total: {previousWeekTotal.toFixed(2)} <KGCO2E />
 			</p>
 		</div>
