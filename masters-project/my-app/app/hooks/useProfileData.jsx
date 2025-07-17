@@ -1,7 +1,7 @@
 //External Libraries / Modules
 import { useEffect, useState } from 'react';
 
-//Custom Functions
+//Custom Hooks/Functions
 import getProfileData from '@/lib/user/getProfile';
 
 export const useProfileData = () => {

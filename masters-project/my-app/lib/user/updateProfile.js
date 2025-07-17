@@ -1,17 +1,17 @@
+//External Libraries / Modules
 import { createClient } from '@/utils/supabase/client';
+
+//Custom Hooks / Functions
+import getAuthenticatedUser from '@/utils/supabase/getAuthenticatedUser';
 
 export default async function updateProfile(firstName, lastName) {
 	const supabase = createClient();
-	const { data: sessionData, error: sessionError } =
-		await supabase.auth.getUser();
-
-	if (sessionError || !sessionData.user)
-		throw new Error('User not authenticated.');
+	const user = await getAuthenticatedUser()
 
 	const { error: supabaseError } = await supabase
 		.from('profiles')
 		.update({ first_name: firstName, last_name: lastName })
-		.eq('id', sessionData.user.id);
+		.eq('id', user.id);
 
 	if (supabaseError) {
 		return { error: supabaseError.message };

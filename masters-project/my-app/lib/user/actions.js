@@ -1,7 +1,6 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
+//External Libraries / Functions
 import { createClient } from '@/utils/supabase/server';
 
 export async function login(formData) {

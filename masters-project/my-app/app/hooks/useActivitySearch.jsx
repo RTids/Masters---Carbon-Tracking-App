@@ -7,8 +7,6 @@ export const useActivitySearch = (activityList) => {
 	const filteredActivities = useMemo(() => {
 		if (!searchTerm.trim() || !activityList) return [];
 
-		console.log(searchTerm);
-
 		//Convert search term to lower case
 		const lowerCaseSearchTerm = searchTerm.toLowerCase().trim();
 

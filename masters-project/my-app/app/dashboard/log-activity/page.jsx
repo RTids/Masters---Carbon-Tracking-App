@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import getActivitiesList from '@/lib/carbon/getActivitiesList';
-import { createClient } from '@/utils/supabase/client';
-import { useRouter } from 'next/navigation';
 
 //Import custom components
 import ProtectedRoute from '@/components/protectedRoute';
@@ -14,7 +12,6 @@ import CategoryGrid from '@/components/ui/categoryGrid';
 import Link from 'next/link';
 
 export default function LogActivity() {
-	const router = useRouter();
 	const [activityList, setActivityList] = useState(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 

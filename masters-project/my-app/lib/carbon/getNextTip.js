@@ -1,15 +1,8 @@
+//External Libraries / Modules
 import { createClient } from '@/utils/supabase/client';
 
 export default async function getNextTip() {
 	const supabase = createClient();
-
-	// Ensure user is authenticated
-	const { data: sessionData, error: sessionError } =
-		await supabase.auth.getUser();
-
-	if (sessionError || !sessionData?.user) {
-		throw new Error('User not authenticated.');
-	}
 
 	// Call the RPC function without passing userId,
 	// as the DB function uses auth.uid() internally

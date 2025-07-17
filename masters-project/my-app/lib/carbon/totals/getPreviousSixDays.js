@@ -1,13 +1,10 @@
 //External Libraries / Modules
 import { createClient } from '@/utils/supabase/client';
+import getAuthenticatedUser from '@/utils/supabase/getAuthenticatedUser';
 
 export default async function getPreviousSixDays() {
 	const supabase = createClient();
-	const { data: sessionData, error: sessionError } =
-		await supabase.auth.getUser();
-
-	if (sessionError || !sessionData.user)
-		throw new Error('User not authenticated.');
+	const user = await getAuthenticatedUser();
 
 	//Here we get todays date and the date 6 days ago, we are going to pull todays emissions based on the
 	//currently logged emissions for the day
@@ -26,7 +23,7 @@ export default async function getPreviousSixDays() {
 	const { data: weeklyData, error: totalError } = await supabase
 		.from('daily_totals')
 		.select('*')
-		.eq('user_id', sessionData.user.id)
+		.eq('user_id', user.id)
 		.gte('date', startDateString)
 		.lte('date', endDateString);
 

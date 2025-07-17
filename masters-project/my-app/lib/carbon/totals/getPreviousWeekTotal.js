@@ -1,14 +1,12 @@
 // External Libraries / Modules
 import { createClient } from '@/utils/supabase/client';
 
+//Custom Hooks / Functions
+import getAuthenticatedUser from '@/utils/supabase/getAuthenticatedUser';
+
 export default async function getPreviousWeekTotal() {
 	const supabase = createClient();
-	const { data: sessionData, error: sessionError } =
-		await supabase.auth.getUser();
-
-	if (sessionError || !sessionData.user) {
-		throw new Error('User not authenticated.');
-	}
+	const user = await getAuthenticatedUser()
 
 	// Get start of this week (Monday UTC)
 	const now = new Date();
@@ -38,7 +36,7 @@ export default async function getPreviousWeekTotal() {
 	const { data: totalData, error: totalError } = await supabase
 		.from('weekly_totals')
 		.select('*')
-		.eq('user_id', sessionData.user.id)
+		.eq('user_id', user.id)
 		.gte('week_start', startOfPreviousWeekStr)
 		.lt('week_start', startOfThisWeekStr);
 

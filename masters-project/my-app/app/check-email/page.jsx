@@ -1,8 +1,10 @@
 'use client';
-
-import { useEffect, useState } from 'react';
+//External Libraries/Modules
+import { useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
+
+//Custom Hooks/Functions
 import getConfirmedProfile from '@/lib/user/checkEmailConfirmed';
 
 export default function CheckEmail() {

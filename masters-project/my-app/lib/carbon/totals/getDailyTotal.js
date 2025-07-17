@@ -1,19 +1,19 @@
+//External Libraries / Functions
 import { createClient } from '@/utils/supabase/client';
+
+//Custom Hooks / Functions
+import getAuthenticatedUser from '@/utils/supabase/getAuthenticatedUser';
 
 export default async function getDailyTotal() {
 	const supabase = createClient();
-	const { data: sessionData, error: sessionError } =
-		await supabase.auth.getUser();
-
-	if (sessionError || !sessionData.user)
-		throw new Error('User not authenticated.');
+	const user = await getAuthenticatedUser();
 
 	const today = new Date().toISOString().split('T')[0];
 
 	const { data: totalData, error: totalError } = await supabase
 		.from('user_activity_logs')
 		.select('*')
-		.eq('user_id', sessionData.user.id)
+		.eq('user_id', user.id)
 		.gte('date_logged', `${today}T00:00:00`)
 		.lt('date_logged', `${today}T23:59:59`);
 

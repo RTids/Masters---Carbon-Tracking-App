@@ -1,4 +1,4 @@
-import { act } from 'react';
+//Custom Hooks / Functions
 import getActivitiesList from './getActivitiesList';
 import getActivityHistory from './getActivityHistory';
 

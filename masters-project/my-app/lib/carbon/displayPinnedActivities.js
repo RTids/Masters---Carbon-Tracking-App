@@ -1,3 +1,4 @@
+//Custom Hooks / Functions
 import getActivitiesList from './getActivitiesList';
 import getPinnedActivities from './getPinnedActivities';
 
