@@ -13,7 +13,7 @@ export default function DrawPieChart({ timeframe }) {
 
 	if (loading) return <Loading />;
 
-	if (data.length < 1)
+	if (data.every((item) => item.value === 0))
 		return <div className='pt-5'>No data for this timeframe.</div>;
 
 	const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
