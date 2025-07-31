@@ -4,10 +4,9 @@ import { createClient } from '@/utils/supabase/client';
 //Custom Hooks / Functions
 import getAuthenticatedUser from '@/utils/supabase/getAuthenticatedUser';
 
-
 export default async function getYesterdayTotal() {
 	const supabase = createClient();
-	const user = await getAuthenticatedUser()
+	const user = await getAuthenticatedUser();
 
 	const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
 

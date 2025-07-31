@@ -1,32 +1,17 @@
 'use client';
 
+//External Modules/Libraries
 import { useEffect, useState } from 'react';
-import getNextTip from '@/lib/carbon/getNextTip';
+
+//Import Custom Hooks/Functions
+import { useCategoryTips } from '@/app/hooks/useCategoryTips';
 import { formatCategory, capitalize } from '@/utils/formatting';
 
 export default function RandomTip() {
-	const [tip, setTip] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-
-	useEffect(() => {
-		async function fetchTip() {
-			try {
-				const nextTip = await getNextTip();
-				setTip(nextTip);
-			} catch (err) {
-				setError(err.message);
-			} finally {
-				setLoading(false);
-			}
-		}
-		fetchTip();
-	}, []);
+	const { tip, loading } = useCategoryTips();
 
 	if (loading)
 		return <p className='w-2/3 max-h-[140px] text-center'>Loading tip...</p>;
-	if (error)
-		return <p className='w-2/3 max-h-[140px] text-center'>Error: {error}</p>;
 
 	if (!tip)
 		return (
