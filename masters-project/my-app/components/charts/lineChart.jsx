@@ -26,6 +26,13 @@ export default function DrawLineChart({ timeframe }) {
 	const toolTipColour = isDark ? '#1a202c' : '#ffffff';
 	const textColour = isDark ? '#ffffff' : '#1a202c';
 
+	const yDomain =
+		timeframe === 'week'
+			? [0, 'auto']
+			: timeframe === 'month'
+			? [0, 60]
+			: [0, 250];
+
 	if (loading) return <Loading />;
 
 	if (data.length < 1)
@@ -37,7 +44,7 @@ export default function DrawLineChart({ timeframe }) {
 				<LineChart width={300} height={300} data={data}>
 					<Line type='monotone' dataKey='total' stroke={lineColour} />
 					<XAxis dataKey='date' stroke={axisColour} />
-					<YAxis dataKey='total' domain={['auto', 'auto']} tickCount={5} />
+					<YAxis dataKey='total' type='number' domain={yDomain} tickCount={5} />
 					<Tooltip
 						contentStyle={{
 							backgroundColor: toolTipColour,
