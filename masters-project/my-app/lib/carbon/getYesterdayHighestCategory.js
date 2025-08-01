@@ -21,5 +21,10 @@ export default async function getYesterdayHighestCategory() {
 	const sorted = Object.entries(categoryObject).sort(([, a], [, b]) => b - a);
 	const highestCategory = sorted[0][0];
 
-	return highestCategory;
+	//If the highest sorted amount is 0 (e.g. There is no previous data), return null.
+	if (sorted[0][1] === 0) {
+		return null;
+	} else {
+		return highestCategory;
+	}
 }

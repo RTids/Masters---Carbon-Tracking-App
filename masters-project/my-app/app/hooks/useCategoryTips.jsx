@@ -14,11 +14,12 @@ export const useCategoryTips = () => {
 		const fetchCategoryTips = async () => {
 			const yesterdayHighestCategory = await getYesterdayHighestCategory();
 			const data = await getTipsByCategory(yesterdayHighestCategory);
-			if (data.length > 0) {
-				setTip(data);
-			} else {
+
+			if (!data) {
 				const nextTip = await getNextTip();
 				setTip(nextTip);
+			} else {
+				setTip(data);
 			}
 
 			setIsLoading(false);
