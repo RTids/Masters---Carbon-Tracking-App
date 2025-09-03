@@ -6,14 +6,14 @@ import getAuthenticatedUser from '@/utils/supabase/getAuthenticatedUser';
 
 export default async function getPreviousTwelveMonths() {
 	const supabase = createClient();
-	const user = await getAuthenticatedUser()
+	const user = await getAuthenticatedUser();
 
 	//Here we get todays date and the date 6 days ago, we are going to pull todays emissions based on the
 	//currently logged emissions for the day
 	const today = new Date();
 	//6 Days ago
 	const startDate = new Date(today);
-	startDate.setFullYear(starts.getFullYear() - 1);
+	startDate.setFullYear(startDate.getFullYear() - 1);
 	//Yesterday
 	const endDate = new Date(today);
 	endDate.setDate(today.getDate() - 1);

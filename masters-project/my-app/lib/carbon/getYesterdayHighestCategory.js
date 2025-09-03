@@ -19,7 +19,16 @@ export default async function getYesterdayHighestCategory() {
 
 	const categoryObject = yesterdayData[0]['category_breakdown'];
 	const sorted = Object.entries(categoryObject).sort(([, a], [, b]) => b - a);
-	const highestCategory = sorted[0][0];
+
+	if (!sorted.length) {
+		return null;
+	}
+
+	const highestCategory = sorted[0][0] || null;
+
+	if (activityError) {
+		console.error(activityError);
+	}
 
 	//If the highest sorted amount is 0 (e.g. There is no previous data), return null.
 	if (sorted[0][1] === 0) {

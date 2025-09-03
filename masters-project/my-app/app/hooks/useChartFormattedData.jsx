@@ -6,6 +6,7 @@ import getPreviousSixDays from '@/lib/carbon/totals/getPreviousSixDays';
 import getDailyTotal from '@/lib/carbon/totals/getDailyTotal';
 import { formatDate } from '@/utils/formatting';
 import getPreviousSixWeeks from '@/lib/carbon/totals/getPreviousSixWeeks';
+import getPreviousTwelveMonths from '@/lib/carbon/totals/getPreviousTwelveMonths';
 
 export const useChartFormattedData = (timeframe) => {
 	const [data, setData] = useState([]);
@@ -21,6 +22,9 @@ export const useChartFormattedData = (timeframe) => {
 			} else if (timeframe === 'month') {
 				const monthlyData = await getPreviousSixWeeks();
 				rawData = [...monthlyData];
+			} else if (timeframe === 'year') {
+				const yearlyData = await getPreviousTwelveMonths();
+				rawData = [...yearlyData];
 			}
 
 			const formatted = rawData.map((item) => {
@@ -29,6 +33,8 @@ export const useChartFormattedData = (timeframe) => {
 					dateKey = item.date;
 				} else if (timeframe === 'month') {
 					dateKey = item.week_start;
+				} else if (timeframe === 'year') {
+					dateKey = item.month_start;
 				}
 
 				return {

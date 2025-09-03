@@ -6,6 +6,7 @@ import getPreviousSixDays from '@/lib/carbon/totals/getPreviousSixDays';
 import getDailyTotal from '@/lib/carbon/totals/getDailyTotal';
 import getPreviousSixWeeks from '@/lib/carbon/totals/getPreviousSixWeeks';
 import { formatCategory } from '@/utils/formatting';
+import getPreviousTwelveMonths from '@/lib/carbon/totals/getPreviousTwelveMonths';
 
 export const usePieChartFormattedData = (timeframe) => {
 	const [data, setData] = useState([]);
@@ -21,6 +22,9 @@ export const usePieChartFormattedData = (timeframe) => {
 			} else if (timeframe === 'month') {
 				const monthlyData = await getPreviousSixWeeks();
 				rawData = [...monthlyData];
+			} else if (timeframe === 'year') {
+				const yearlyData = await getPreviousTwelveMonths();
+				rawData = [...yearlyData];
 			}
 
 			let categoryTotals = [
