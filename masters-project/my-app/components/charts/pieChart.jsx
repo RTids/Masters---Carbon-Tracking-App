@@ -2,7 +2,6 @@
 
 //External Libaries / Modules
 import { Pie, PieChart, Cell, Legend, ResponsiveContainer } from 'recharts';
-import { useTheme } from 'next-themes';
 //Internal Components
 import Loading from '../ui/loading';
 //Custom Hooks / Functions

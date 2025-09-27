@@ -52,7 +52,8 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 						id='amount'
 						name='amount'
 						type='number'
-						min='0'
+						min='0.1'
+						step='0.1'
 						value={amount}
 						onChange={(e) => setAmount(e.target.value)}
 						required
