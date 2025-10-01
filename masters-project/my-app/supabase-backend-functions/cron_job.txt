@@ -1,0 +1,17 @@
+To run the aggregate functions every week/month, I used cron to automatically execute these functions within Supabse.
+
+Here is an example cron job:
+
+SELECT cron.schedule(
+  'aggregate_weekly_emissions_job',  -- unique job name
+  '0 0 * * 1',                       -- cron expression (see below)
+  $$ SELECT aggregate_weekly_emissions(); $$
+);
+
+'0 0 * * 1' = Run at 00:00 every Monday (start of the week).
+
+Format: minute hour day-of-month month day-of-week
+
+0 0 * * 1 → Monday at midnight.
+
+I then used an adjusted one for running every month
