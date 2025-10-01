@@ -48,7 +48,7 @@ export default function LogActivityForm({ activity, onSuccess, onError }) {
 			>
 				<div className='pb-3'>
 					<input
-						className='w-1/5 pr-2'
+						className='w-3/5 pr-2'
 						id='amount'
 						name='amount'
 						type='number'
