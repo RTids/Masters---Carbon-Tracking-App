@@ -48,7 +48,10 @@ export default function DrawLineChart({ timeframe }) {
 					<XAxis
 						dataKey='date'
 						stroke={axisColour}
-						interval={0}
+						interval={'preserveStartEnd'}
+						tick={{
+							angle: 0,
+						}}
 						padding={{ right: 40 }}
 					/>
 					<YAxis dataKey='total' type='number' domain={yDomain} tickCount={5} />
