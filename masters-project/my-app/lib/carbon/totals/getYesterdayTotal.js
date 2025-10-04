@@ -11,7 +11,7 @@ export default async function getYesterdayTotal() {
 	const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
 
 	const { data: totalData, error: totalError } = await supabase
-		.from('user_activity_logs')
+		.from('daily_totals')
 		.select('*')
 		.eq('user_id', user.id)
 		.gte('date_logged', `${yesterday}T00:00:00`)
