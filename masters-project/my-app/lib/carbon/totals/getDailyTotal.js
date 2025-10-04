@@ -27,7 +27,7 @@ export default async function getDailyTotal() {
 
 	const dailyEmissionsObject = {
 		total: dailyEmissions,
-		date: today,
+		date_logged: `${today}T00:00:00`,
 	};
 
 	return dailyEmissionsObject;

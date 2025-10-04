@@ -27,10 +27,12 @@ export const useChartFormattedData = (timeframe) => {
 				rawData = [...yearlyData];
 			}
 
+			console.log(rawData);
+
 			const formatted = rawData.map((item) => {
 				let dateKey;
 				if (timeframe === 'week') {
-					dateKey = item.date;
+					dateKey = item.date_logged;
 				} else if (timeframe === 'month') {
 					dateKey = item.week_start;
 				} else if (timeframe === 'year') {

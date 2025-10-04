@@ -24,8 +24,8 @@ export default async function getPreviousSixDays() {
 		.from('daily_totals')
 		.select('*')
 		.eq('user_id', user.id)
-		.gte('date', startDateString)
-		.lte('date', endDateString);
+		.gte('date_logged', startDateString)
+		.lte('date_logged', endDateString);
 
 	if (totalError) {
 		throw new Error(totalError.message);

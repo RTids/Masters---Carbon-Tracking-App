@@ -14,8 +14,8 @@ export default async function getYesterdayHighestCategory() {
 		.from('daily_totals')
 		.select('*')
 		.eq('user_id', user.id)
-		.gte('date', `${yesterday}T00:00:00`)
-		.lt('date', `${yesterday}T23:59:59`);
+		.gte('date_logged', `${yesterday}T00:00:00`)
+		.lt('date_logged', `${yesterday}T23:59:59`);
 
 	const categoryObject = yesterdayData[0]['category_breakdown'];
 	const sorted = Object.entries(categoryObject).sort(([, a], [, b]) => b - a);

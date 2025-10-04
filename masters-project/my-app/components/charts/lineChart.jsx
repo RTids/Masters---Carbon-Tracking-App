@@ -26,9 +26,11 @@ export default function DrawLineChart({ timeframe }) {
 	const toolTipColour = isDark ? '#1a202c' : '#ffffff';
 	const textColour = isDark ? '#ffffff' : '#1a202c';
 
+	const maxTotal = Math.max(...data.map((d) => parseFloat(d.total)));
+
 	const yDomain =
 		timeframe === 'week'
-			? [0, 'auto']
+			? [0, Math.ceil(maxTotal * 1.1)]
 			: timeframe === 'month'
 			? [0, 60]
 			: [0, 250];
