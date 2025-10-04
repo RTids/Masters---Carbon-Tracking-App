@@ -57,9 +57,7 @@ export async function GET(request) {
 				</body>
 				</html>
 			`;
-			return new NextResponse(html, {
-				headers: { 'Content-Type': 'text/html' },
-			});
+			return NextResponse.redirect(new URL('/dashboard', request.url));
 		}
 	}
 
