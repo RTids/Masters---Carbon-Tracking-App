@@ -49,7 +49,7 @@ export default function DrawLineChart({ timeframe }) {
 						dataKey='date'
 						stroke={axisColour}
 						interval={0}
-						padding={{ right: 20 }}
+						padding={{ right: 40 }}
 					/>
 					<YAxis dataKey='total' type='number' domain={yDomain} tickCount={5} />
 					<Tooltip
