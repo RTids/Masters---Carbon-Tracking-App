@@ -45,7 +45,12 @@ export default function DrawLineChart({ timeframe }) {
 			<ResponsiveContainer width='100%' height={300}>
 				<LineChart width={300} height={300} data={data}>
 					<Line type='monotone' dataKey='total' stroke={lineColour} />
-					<XAxis dataKey='date' stroke={axisColour} interval={0} />
+					<XAxis
+						dataKey='date'
+						stroke={axisColour}
+						interval={0}
+						padding={{ right: 20 }}
+					/>
 					<YAxis dataKey='total' type='number' domain={yDomain} tickCount={5} />
 					<Tooltip
 						contentStyle={{
