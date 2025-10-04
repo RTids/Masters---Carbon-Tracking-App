@@ -21,9 +21,7 @@ export default async function getYesterdayTotal() {
 		throw new Error(totalError.message);
 	}
 
-	const yesterdayEmissions = totalData.reduce((total, item) => {
-		return total + item.calculated_emissions;
-	}, 0);
+	const yesterdayEmissions = totalData[0].total;
 
 	return yesterdayEmissions;
 }

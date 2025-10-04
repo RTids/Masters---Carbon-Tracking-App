@@ -27,7 +27,6 @@ export const useChartFormattedData = (timeframe) => {
 				rawData = [...yearlyData];
 			}
 
-			console.log(rawData);
 
 			const formatted = rawData.map((item) => {
 				let dateKey;
