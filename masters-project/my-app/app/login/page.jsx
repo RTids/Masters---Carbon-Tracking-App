@@ -4,6 +4,7 @@ import { login } from '../../lib/user/actions';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { useState } from 'react';
+import { Button } from '@/components/ui/buttons/button';
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -27,14 +28,33 @@ export default function LoginPage() {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label htmlFor='email'>Email:</label>
-			<input id='email' name='email' type='email' required />
-			<label htmlFor='password'>Password:</label>
-			<input id='password' name='password' type='password' required />
-			<button type='submit' disabled={loading}>
+		<form
+			onSubmit={handleSubmit}
+			className='flex flex-col justify-center items-center gap-2'
+		>
+			<label htmlFor='email' className='pr-2'>
+				Email:
+			</label>
+			<input
+				id='email'
+				name='email'
+				type='email'
+				required
+				className='border border-white mr-4'
+			/>
+			<label htmlFor='password' className='pr-2'>
+				Password:
+			</label>
+			<input
+				id='password'
+				name='password'
+				type='password'
+				required
+				className='border border-white mr-4'
+			/>
+			<Button type='submit' disabled={loading}>
 				{loading ? 'Logging in...' : 'Log in'}
-			</button>
+			</Button>
 		</form>
 	);
 }
