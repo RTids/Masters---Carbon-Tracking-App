@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import getTipsByCategory from '@/lib/carbon/getTipsByCategory';
 import getYesterdayHighestCategory from '@/lib/carbon/getYesterdayHighestCategory';
 import getNextTip from '@/lib/carbon/getNextTip';
+import recordTipView from '@/lib/carbon/recordTipView';
 
 export const useCategoryTips = () => {
 	const [tip, setTip] = useState(null);

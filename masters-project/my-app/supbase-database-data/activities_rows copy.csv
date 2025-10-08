@@ -1,0 +1,58 @@
+id,name,emissions_per_unit,unit,category,tags,icon
+00e9ee74-9879-422b-b8f0-13adf2fd4254,Use dishwasher,1.321,use,energy-home,"[""dishwasher"",""home"",""kitchen"",""electricity""]",energy-home
+0234d89f-181d-49ed-839c-e60b89e340d5,Pasta dish,1.054,item,food-drink,"[""pasta"",""meal""]",food-drink
+048012f4-86e0-495f-b289-564d720a7c7a,Milkshake,2.441,item,food-drink,"[""milkshake"",""dairy"",""drink""]",food-drink
+0cb4087a-f8aa-40b4-a3ed-96bc60af267d,Electric shower (10 mins),2.641,use,energy-home,"[""shower"",""bathroom"",""electric"",""home""]",energy-home
+13987678-814c-4a46-ace2-9f29ffd053e4,Train,0.03546,km-per_person,travel,"[""rail"",""journey"",""travel"",""train""]",train
+1a059791-06dd-4579-b170-45b8fccf671b,Gaming console (1 hour),0.754,use,energy-home,"[""gaming"",""console"",""play"",""home""]",energy-home
+202b9c2e-8793-4120-8faa-2c7d2804f389,Using disposable plates,1.643,activity,lifestyle,"[""disposable"",""plates"",""waste""]",lifestyle
+2175cbcf-c07b-4622-8f2b-965e872bc29e,Pet ownership (monthly),3.832,activity,lifestyle,"[""pet"",""dog"",""cat"",""monthly""]",lifestyle
+2698f0fd-6c40-434d-a897-2bf08242ce4b,Coffee with milk,0.742,item,food-drink,"[""coffee"",""milk"",""drink""]",food-drink
+2d35deac-3abe-48ce-a2be-dbddc89bdb25,Flight - (Long Haul),0.26128,km-per_person,travel,"[""flight"",""fly"",""long"",""haul"",""aeroplane"",""airplane"",""travel"",""journey""]",plane
+36ff5c6e-d40e-4679-ae64-090d838d0cbd,Cheese portion,2.981,item,food-drink,"[""cheese"",""dairy"",""portion""]",food-drink
+37955176-5799-430b-8d03-452a7a36a9c2,Microwave use,0.674,use,energy-home,"[""microwave"",""cook"",""home""]",energy-home
+426d3c44-c9ab-47f3-b678-0b8050044669,Attending a concert,1.884,activity,lifestyle,"[""concert"",""event"",""entertainment""]",lifestyle
+451396bb-345d-4b6e-b4d4-7d9d622f9339,Attending a sports event,2.871,activity,lifestyle,"[""sports"",""event"",""match"",""game""]",lifestyle
+465733b2-c2e5-4cd3-b7b8-87cac24fe30b,Fast fashion purchase,4.112,activity,lifestyle,"[""fast"",""fashion"",""clothing""]",lifestyle
+4aa7284f-11dd-4e7c-92c1-560a53b446ad,Dry cleaning clothes,2.214,activity,lifestyle,"[""dry"",""clean"",""clothes""]",lifestyle
+4ed83b7e-00af-4310-beb9-440ce599dbb1,Long shower,3.511,activity,lifestyle,"[""shower"",""waste"",""water""]",lifestyle
+542ef3bd-275b-4bc5-9486-7d083235329a,Car - (Diesel),0.16984,km,travel,"[""car"",""diesel"",""travel"",""journey""]",car
+5caf6a46-13de-4c25-9b5f-6666825e5a3d,Black coffee,0.372,item,food-drink,"[""coffee"",""black"",""drink""]",food-drink
+5f11ecb5-553c-4d9d-a27e-ab129335c790,Desktop computer (1 hour),0.934,use,energy-home,"[""desktop"",""computer"",""home"",""work""]",energy-home
+6060db8c-af7b-45bc-acd8-8f75ecf2f848,Heating home,2.145,use,energy-home,"[""heating"",""home"",""energy"",""gas""]",energy-home
+6533cdc4-3229-4482-a5fe-d29229a912c7,energy per kWh,0.20705,kWh,energy-home,"[""hidden""]",unknown
+6e00b558-5b38-40b9-a526-af7c41e20995,Tofu stir fry,1.042,item,food-drink,"[""tofu"",""stirfry"",""vegan""]",food-drink
+6e18a9ab-3757-4f27-a3ba-080e52f6ef90,Online shopping delivery,2.341,activity,lifestyle,"[""online"",""shopping"",""delivery"",""parcel""]",lifestyle
+71889fc2-4e9a-4700-9762-5a267d015bf1,Bus,0.10846,km-per_person,travel,"[""bus"",""travel"",""journey""]",bus
+75775b89-e847-4c54-86f7-a073c2065632,Gym session,1.284,activity,lifestyle,"[""gym"",""exercise"",""fitness""]",lifestyle
+76bf2ac0-4e1c-4c43-9209-3751123ae80a,Home Working,0.33378,hour,energy-home,"[""work"",""home"",""remote"",""working"",""wfh"",""home working""]",unknown
+83cc04bf-397e-4739-9641-5483253793f4,Washing machine cycle,0.992,use,energy-home,"[""washing"",""machine"",""laundry"",""home""]",energy-home
+87eef5f9-bf0f-4d73-9a5f-8571abb259b6,Streaming video (1 hour),0.824,activity,lifestyle,"[""streaming"",""video"",""watch"",""hour""]",lifestyle
+98034453-c2bf-4754-89af-b6ee1903dc64,Car - (Petrol),0.1645,km,travel,"[""car"",""petrol"",""travel"",""journey""]",car
+988e23d0-b339-444c-8083-3e7b71e75038,Lentil curry,1.231,item,food-drink,"[""lentil"",""curry"",""vegan""]",food-drink
+99b65258-9920-4dcf-8b09-44ea3f897213,Motorbike,0.11367,km,travel,"[""motorbike"",""bike"",""travel"",""journey"",""petrol""]",motorbike
+9a0dbbf1-87d3-4e4e-9051-b6d9ae794c70,Car - (Hybrid),0.12607,km,travel,"[""car"",""hybrid"",""travel"",""journey""]",car
+a0b35b2c-52c1-4600-8c73-a3d7abc64752,Beef burger,6.841,item,food-drink,"[""beef"",""burger"",""food""]",food-drink
+a0d2972d-3e69-40d4-90fe-5c4f769e6746,Pizza slice,1.884,item,food-drink,"[""pizza"",""cheese"",""slice""]",food-drink
+a230ac12-c28c-46c6-8ffc-a4497829c8a1,Using air freshener spray,1.731,activity,lifestyle,"[""air"",""freshener"",""spray""]",lifestyle
+a3d1906a-3219-4933-916a-56a8f00c25e9,Flight - (Short Haul),0.18592,km-per_person,travel,"[""flight"",""fly"",""short"",""haul"",""aeroplane"",""airplane"",""travel"",""journey""]",plane
+ad71bc38-fdeb-4039-ac43-e98e6d733603,Chicken sandwich,3.311,item,food-drink,"[""chicken"",""sandwich"",""food""]",food-drink
+ae0c8e70-0864-4e0b-ba3c-3a54ab3f1d14,TV use (1 hour),0.533,use,energy-home,"[""tv"",""watch"",""hour"",""home""]",energy-home
+b0884168-e95e-4908-b999-da6d1e66b9bc,Boil Kettle,0.01138,cup,food-drink,"[""boil"",""water"",""kettle"",""tea"",""coffee"",""hot""]",kettle
+b9ea2c55-96ea-476a-bef0-49dde1b8b654,Vegan salad,0.891,item,food-drink,"[""vegan"",""salad"",""plant"",""food""]",food-drink
+bd42e959-db9f-42b7-a7b2-54112d50a723,Bottle of water,0.311,item,food-drink,"[""bottle"",""water"",""drink""]",food-drink
+c1a352a8-8d39-489d-88d6-ae0da0ef3cd4,Cooling home,1.774,use,energy-home,"[""cooling"",""aircon"",""ac"",""home""]",energy-home
+cd0ff19e-fd73-427f-84cf-5ba392add104,Weekend city break,6.421,activity,lifestyle,"[""city"",""break"",""trip"",""holiday""]",lifestyle
+cde0419e-d5bf-426e-a4d1-467f54f1f8a9,Chocolate bar,1.721,item,food-drink,"[""chocolate"",""bar"",""sweet""]",food-drink
+cef2edee-cf79-4d6c-98f0-54b90935d1b0,Flight - (Domestic),0.27257,km-per_person,travel,"[""flight"",""fly"",""domestic"",""haul"",""aeroplane"",""airplane"",""travel"",""journey""]",plane
+d0a65511-111e-478b-ba99-244c5f02c243,LED lighting (1 hour),0.121,use,energy-home,"[""led"",""lighting"",""bulb"",""home""]",energy-home
+d3b172dc-4dcc-4f2e-9ef1-5eddf7d1a3d1,Vacuuming,0.842,use,energy-home,"[""vacuum"",""cleaning"",""home""]",energy-home
+d40ddb4c-0d11-4a0e-8bd3-710c5960b7b3,Oven use (1 hour),2.215,use,energy-home,"[""oven"",""cooking"",""bake"",""home""]",energy-home
+da2c079c-0054-47cd-bb9c-147408f33f3d,Use tumble dryer,1.754,use,energy-home,"[""tumble"",""dryer"",""home"",""electricity""]",energy-home
+dda30f13-5041-4606-a922-8c676ecd24f9,Canned soft drink,0.551,item,food-drink,"[""soft"",""drink"",""can"",""soda""]",food-drink
+e0cf5c5f-c3f4-46e2-91ef-1307cff0dc1a,Charging smartphone,0.112,use,energy-home,"[""charging"",""phone"",""smartphone"",""home""]",energy-home
+e3c68cee-514e-44ac-949f-b3fed29a050e,Sausage roll,2.612,item,food-drink,"[""sausage"",""roll"",""meat""]",food-drink
+e6411561-48da-4c81-9205-697f606db864,Car - (Electric),0,km,travel,"[""car"",""electric"",""travel"",""journey""]",car
+ef4d6a23-402c-4ebd-84a4-780cc60d4d4c,Printing documents,0.981,activity,lifestyle,"[""print"",""documents"",""paper""]",lifestyle
+f09cc70d-57c1-410a-9b66-eff3ecee9340,Wasting food,3.245,activity,lifestyle,"[""food"",""waste""]",lifestyle
+f0d0eb06-901d-41cd-8893-cd4519d47170,Charging EV,2.025,use,energy-home,"[""charging"",""ev"",""electric"",""car"",""home""]",energy-home
