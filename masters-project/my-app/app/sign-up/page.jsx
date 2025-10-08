@@ -1,9 +1,12 @@
 'use client';
 
+//External Libraries/Modules
 import { signup } from '../../lib/user/actions';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { useState } from 'react';
+
+//Internal Components
 import { Button } from '@/components/ui/buttons/button';
 
 export default function SignUpPage() {

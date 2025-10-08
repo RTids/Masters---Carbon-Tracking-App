@@ -10,8 +10,10 @@ import {
 	YAxis,
 } from 'recharts';
 import { useTheme } from 'next-themes';
+
 //Internal Components
 import Loading from '../ui/loading';
+
 //Custom Hooks / Functions
 import { useChartFormattedData } from '@/app/hooks/useChartFormattedData';
 

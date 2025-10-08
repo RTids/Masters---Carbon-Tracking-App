@@ -1,15 +1,18 @@
 'use client';
 
+//External Libraries/Modules
 import { useState, useEffect } from 'react';
-import getActivitiesList from '@/lib/carbon/getActivitiesList';
+import Link from 'next/link';
 
-//Import custom components
+//Internal components
 import ProtectedRoute from '@/components/protectedRoute';
 import ActivitySearch from '@/components/ui/activitySearch';
 import { Button } from '@/components/ui/buttons/button';
 import NavBar from '@/components/ui/navBar';
 import CategoryGrid from '@/components/ui/categoryGrid';
-import Link from 'next/link';
+
+//Custom Hooks/Functions
+import getActivitiesList from '@/lib/carbon/getActivitiesList';
 
 export default function LogActivity() {
 	const [activityList, setActivityList] = useState(null);

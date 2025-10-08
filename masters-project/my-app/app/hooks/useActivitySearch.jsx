@@ -1,3 +1,4 @@
+//External Libraries/Modules
 import { useCallback, useMemo, useState } from 'react';
 
 export const useActivitySearch = (activityList) => {

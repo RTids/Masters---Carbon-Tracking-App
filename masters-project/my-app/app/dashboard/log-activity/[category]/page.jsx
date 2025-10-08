@@ -1,13 +1,18 @@
 'use client';
 
+//External Libraries/Modules
 import { use, useEffect, useState } from 'react';
 import ProtectedRoute from '@/components/protectedRoute';
-import NavBar from '@/components/ui/navBar';
+import { toast } from 'sonner';
 import Modal from '@/components/ui/shadcn/modal';
+
+//Internal Components
+import NavBar from '@/components/ui/navBar';
 import PinActivityButton from '@/components/ui/pinActivityButton';
 import LogActivityForm from '@/components/ui/logActivityForm';
+
+//Custom Hooks/Functions
 import getCategoryActivitiesList from '@/lib/carbon/getCategoryActivitiesList';
-import { toast } from 'sonner';
 import { formatCategory } from '@/utils/formatting';
 
 export default function History({ params }) {
